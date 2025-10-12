@@ -178,11 +178,15 @@ body {
 }
 
 @keyframes flipWord {
-    0%, 45% {
+
+    0%,
+    45% {
         opacity: 1;
         transform: translateY(0);
     }
-    55%, 100% {
+
+    55%,
+    100% {
         opacity: 0;
         transform: translateY(-20px);
     }
