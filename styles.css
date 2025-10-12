@@ -1,4 +1,6 @@
-/* Reset and Base Styles */
+/* =======================================
+   RESET & BASE STYLES — 高级感 Edition
+======================================= */
 * {
     margin: 0;
     padding: 0;
@@ -8,31 +10,31 @@
 :root {
     /* Primary neutral tones */
     --primary-color: #2E2E2E;
-    /* Charcoal black – main text & buttons */
-    --secondary-color: #6B5B95;
-    /* Desaturated mauve – subtle accent */
-    --accent-color: #A78BFA;
-    /* Soft lavender accent (optional) */
+    /* Charcoal black – main tone */
+    --secondary-color: #B08BBB;
+    /* Dusty lilac accent */
+    --accent-color: #C7B8EA;
+    /* Pale lavender accent */
 
     /* Neutrals and surfaces */
     --text-dark: #1A1A1A;
-    /* Deep gray-black for main text */
-    --text-light: #6B7280;
-    /* Cool gray for descriptions */
+    /* Deep text */
+    --text-light: #6B6B6B;
+    /* Muted gray for paragraphs */
     --bg-white: #FFFFFF;
     --bg-light: #F8F7F5;
-    /* Warm white background */
+    /* Warm white */
     --bg-cream: #F3F0EA;
-    /* Light ivory tone for contrast sections */
-    --border-color: #E5E5E5;
+    /* Ivory beige */
+    --border-color: #E2E0DD;
 
-    /* Semantic colors (kept muted) */
-    --success-color: #3BAF7C;
-    --warning-color: #D9A441;
-    --danger-color: #C45A5A;
+    /* Semantic colors (muted) */
+    --success-color: #4E9A77;
+    --warning-color: #C8A44B;
+    --danger-color: #B66161;
 
     /* Optional dark anchor tone */
-    --navy: #202020;
+    --navy: #222222;
 }
 
 body {
@@ -40,7 +42,7 @@ body {
     color: var(--text-dark);
     line-height: 1.6;
     overflow-x: hidden;
-    background: var(--bg-light);
+    background: var(--warm-white);
 }
 
 .container {
@@ -138,6 +140,9 @@ body {
     max-width: 500px;
     height: auto;
     border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    background: white;
+    padding: 1rem;
 }
 
 .hero h1 {
@@ -188,6 +193,7 @@ body {
 }
 
 @keyframes flipWord {
+
     0%,
     45% {
         opacity: 1;
@@ -204,6 +210,7 @@ body {
 .hero-buttons {
     display: flex;
     gap: 1rem;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
