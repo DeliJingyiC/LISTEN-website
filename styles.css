@@ -113,7 +113,7 @@ body {
 /* Hero Section */
 .hero {
     background: var(--bg-cream);
-    background-image: url('background_image2.png');
+    background-image: url('background_image3.png');
     background-size: contain;
     background-position: right center;
     background-repeat: no-repeat;
