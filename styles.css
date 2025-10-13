@@ -186,14 +186,18 @@ body {
     display: inline-block;
     position: relative;
     min-width: 200px;
+    height: 1.2em;
+    vertical-align: baseline;
     text-align: left;
 }
 
 .flip-word {
     position: absolute;
     left: 0;
+    top: 0;
     opacity: 0;
     animation: flipWord 4s infinite;
+    white-space: nowrap;
 }
 
 .flip-word:nth-child(1) {
