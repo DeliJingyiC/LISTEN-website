@@ -139,12 +139,13 @@ body {
     width: 100%;
     max-width: 600px;
     height: auto;
-    border-radius: 1rem;
-    background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(250,248,245,0.98));
-    padding: 2rem;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 2px 8px rgba(0, 0, 0, 0.04);
+    border-radius: 0;
+    background: transparent;
+    padding: 0;
+    box-shadow: none;
     object-fit: contain;
+    opacity: 0.95;
+    mix-blend-mode: multiply;
 }
 
 .hero h1 {
