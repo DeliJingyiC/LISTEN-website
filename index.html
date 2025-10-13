@@ -1093,8 +1093,9 @@
                             content alone, what emotion is being expressed?
                         </div>
                         <div class="example-choices">
-                            <strong>Choices:</strong> A. neutral | B. sadness | C. excitement | D. frustration | E. fear
-                            | F. disgust | G. happiness | <span class="highlight-answer">H. anger</span> | I. surprise
+                            <strong>Choices:</strong> A. neutral | B. sadness | C. excitement | <span
+                                class="highlight-answer"></span>D. frustration</span> | E. fear
+                            | F. disgust | G. happiness | H. anger | I. surprise
                         </div>
                         <div class="example-results">
                             <div class="result-item">
@@ -1131,7 +1132,7 @@
                             conveyed by the words in this statement?
                         </div>
                         <div class="example-choices">
-                            <strong>Choices:</strong> A. surprise | <span class="highlight-answer">B. excitement</span>
+                            <strong>Choices:</strong> A. surprise | B. excitement
                             | C. sadness | D. disgust | E. fear | F. neutral | G. anger | H. happiness | I. frustration
                             | J. ridicule
                         </div>
@@ -1143,18 +1144,75 @@
                             <div class="result-item">
                                 <strong>Model Prediction:</strong> <span class="badge-correct">B (excitement) ✓</span>
                             </div>
-                            <div class="result-item">
-                                <strong>Note:</strong> <span class="badge-warning">Audio conveys ridicule
-                                    (conflict)</span>
-                            </div>
+
                         </div>
-                        <div class="example-note">
-                            Although the lexical content expresses excitement, the corresponding audio conveys ridicule,
-                            highlighting the designed lexical–prosodic conflict.
-                        </div>
+
                     </div>
                 </div>
+                <!-- Neutral-Text Audio Example -->
+                <div class="example-card">
+                    <div class="example-header Neutral-Text">
+                        <span class="example-icon">3</span>
+                        <h3>Neutral-Text (Audio-only)</h3>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-field">
+                            <strong>Sample ID:</strong> <code>SAMPLE_7c8b53fb</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Audio:</strong> <code>RAVDESS_train_0333</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
+                            communicated through the speaker's vocal prosody?
+                        </div>
+                        <div class="example-choices">
+                            <strong>Choices:</strong> A. surprise | B. sadness | C. fear | D. anger | E.
+                            calm |F. happiness | G. neutral | H. disgust
+                        </div>
+                        <div class="example-results">
+                            <div class="result-item">
+                                <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✗</span>
+                            </div>
+                        </div>
 
+                    </div>
+                </div>
+                <!-- Emotion-Matched Audio Example -->
+                <div class="example-card">
+                    <div class="example-header Emotion-Matched">
+                        <span class="example-icon">3</span>
+                        <h3>Emotion-Matched (Audio-only)</h3>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-field">
+                            <strong>Sample ID:</strong> <code>SAMPLE_dd0f6e9d</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05M_script01_1b_F030</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
+                            communicated through the speaker's vocal prosody?
+                        </div>
+                        <div class="example-choices">
+                            <strong>Choices:</strong> A. frustration | B. anger | C. neutral | D. excitement | E.
+                            happiness |F. surprise | G. disgust | H. fear | I. sadness
+                        </div>
+                        <div class="example-results">
+                            <div class="result-item">
+                                <strong>Ground Truth :</strong> <span class="badge-frustration">frustration</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (frustration) ✗</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
                 <!-- Emotion-Mismatched Audio Example -->
                 <div class="example-card">
                     <div class="example-header emotion-mismatched">
@@ -1173,8 +1231,9 @@
                             communicated through the speaker's vocal prosody?
                         </div>
                         <div class="example-choices">
-                            <strong>Choices:</strong> A. disgust | B. neutral | C. ridicule | D. frustration | E.
-                            sadness | <span class="highlight-answer">F. anger</span> | G. excitement | H. fear | I.
+                            <strong>Choices:</strong> A. disgust | B. neutral | C. ridicule | <span
+                                class="highlight-answer">D. frustration</span> | E.
+                            sadness | F. anger | G. excitement | H. fear | I.
                             surprise | J. happiness
                         </div>
                         <div class="example-results">
@@ -1185,11 +1244,116 @@
                                 <strong>Model Prediction:</strong> <span class="badge-incorrect">G (excitement) ✗</span>
                             </div>
                         </div>
-                        <div class="example-note">
-                            The lexical content is superficially positive, but the prosody expresses irritation and
-                            anger. The model incorrectly predicts excitement, indicating difficulty in resolving
-                            sarcastic or contrastive vocal tone.
+
+                    </div>
+                </div>
+                <!-- Neutral-Text Audio Example -->
+                <div class="example-card">
+                    <div class="example-header Neutral-Text">
+                        <span class="example-icon">3</span>
+                        <h3>Neutral-Text (Text+Audio)</h3>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-field">
+                            <strong>Sample ID:</strong> <code>SAMPLE_7c8b53fb</code>
                         </div>
+                        <div class="example-field">
+                            <strong>Audio:</strong> <code>RAVDESS_train_0333</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Transcription:</strong> <em>"Kids are talking by the door."</em>
+                        </div>
+                        <div class="example-field">
+                            <strong>Prompt:</strong> Listen to the audio and read the transcription, then classify the
+                            emotion. What emotion does the speaker convey through their tone?
+                        </div>
+                        <div class="example-choices">
+                            <strong>Choices:</strong> A. surprise | B. sadness | C. fear | D. anger | E.
+                            calm |F. happiness | G. neutral | H. disgust
+                        </div>
+                        <div class="example-results">
+                            <div class="result-item">
+                                <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✗</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Emotion-Matched Audio Example -->
+                <div class="example-card">
+                    <div class="example-header Emotion-Matched">
+                        <span class="example-icon">3</span>
+                        <h3>Emotion-Matched (Text+Audio)</h3>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-field">
+                            <strong>Sample ID:</strong> <code>SAMPLE_dd0f6e9d</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05M_script01_1b_F030</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Transcription:</strong> <em>"What the hell is this?"</em>
+                        </div>
+                        <div class="example-field">
+                            <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
+                            communicated through the speaker's vocal prosody?
+                        </div>
+                        <div class="example-choices">
+                            <strong>Choices:</strong> A. frustration | B. anger | C. neutral | D. excitement | E.
+                            happiness |F. surprise | G. disgust | H. fear | I. sadness
+                        </div>
+                        <div class="example-results">
+                            <div class="result-item">
+                                <strong>Ground Truth :</strong> <span class="badge-frustration">frustration</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (frustration) ✗</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <!-- Emotion-Mismatched Audio Example -->
+                <div class="example-card">
+                    <div class="example-header emotion-mismatched">
+                        <span class="example-icon">3</span>
+                        <h3>Emotion-Mismatched (Audio-only)</h3>
+                    </div>
+                    <div class="example-content">
+                        <div class="example-field">
+                            <strong>Sample ID:</strong> <code>SAMPLE_c52e71d0</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Audio:</strong> <code>MUStARD_PRO_1_7575_u_3B</code>
+                        </div>
+                        <div class="example-field">
+                            <strong>Transcription:</strong> <em>"You're right, the party's fantastic. Please, tell me
+                                more. I haven't heard enough about it all week because hearing about that never gets
+                                old!"</em>
+                        </div>
+                        <div class="example-field">
+                            <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
+                            communicated through the speaker's vocal prosody?
+                        </div>
+                        <div class="example-choices">
+                            <strong>Choices:</strong> A. disgust | B. neutral | C. ridicule | <span
+                                class="highlight-answer">D. frustration</span> | E.
+                            sadness | F. anger | G. excitement | H. fear | I.
+                            surprise | J. happiness
+                        </div>
+                        <div class="example-results">
+                            <div class="result-item">
+                                <strong>Ground Truth (Implicit):</strong> <span class="badge-anger">anger</span>
+                            </div>
+                            <div class="result-item">
+                                <strong>Model Prediction:</strong> <span class="badge-incorrect">G (excitement) ✗</span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
 
@@ -1215,7 +1379,7 @@
                         </div>
                         <div class="example-choices">
                             <strong>Choices:</strong> A. anger | B. happiness | C. fear | D. sadness | E. surprise | F.
-                            frustration | <span class="highlight-answer">G. excitement</span> | H. disgust | I. neutral
+                            frustration | G. excitement | H. disgust | I. neutral
                         </div>
                         <div class="example-results">
                             <div class="result-item">
