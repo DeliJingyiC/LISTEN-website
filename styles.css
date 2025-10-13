@@ -185,12 +185,12 @@ body {
 .flip-words {
     display: inline-block;
     position: relative;
-    min-width: 240px;
-    width: 240px;
+    min-width: 280px;
+    width: 280px;
     height: 1.2em;
     vertical-align: baseline;
     text-align: left;
-    margin-right: 0.2em;
+    margin-right: 0.5em;
 }
 
 .flip-word {
