@@ -15,7 +15,7 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #F3F0E6;
             min-height: 100vh;
             overflow-x: hidden;
         }
@@ -29,7 +29,7 @@
         /* Intro Screen */
         .intro-screen {
             text-align: center;
-            color: white;
+            color: #1A1A1A;
             animation: fadeIn 0.8s ease-in;
         }
 
@@ -40,7 +40,7 @@
         .audio-icon {
             width: 120px;
             height: 120px;
-            background: rgba(255, 255, 255, 0.15);
+            background: rgba(46, 46, 46, 0.08);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -48,23 +48,25 @@
             margin: 0 auto 2rem;
             backdrop-filter: blur(10px);
             animation: pulse 2s infinite;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            border: 2px solid #E2E0DD;
         }
 
         .audio-icon i {
             font-size: 3.5rem;
+            color: #2E2E2E;
         }
 
         h1 {
             font-size: 3.5rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            color: #222222;
+            font-weight: 700;
         }
 
         .subtitle {
             font-size: 1.8rem;
             margin-bottom: 2rem;
-            color: #fbbf24;
+            color: #B08BBB;
             font-weight: 600;
         }
 
@@ -73,7 +75,7 @@
             max-width: 600px;
             margin: 0 auto 3rem;
             line-height: 1.8;
-            opacity: 0.95;
+            color: #6B6B6B;
         }
 
         .info-grid {
@@ -84,53 +86,54 @@
         }
 
         .info-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: white;
             padding: 2rem;
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.3s ease;
+            border: 1px solid #E2E0DD;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .info-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
         }
 
         .info-card i {
             font-size: 2.5rem;
             margin-bottom: 1rem;
-            color: #fbbf24;
+            color: #B08BBB;
         }
 
         .info-card h3 {
             font-size: 1.2rem;
             margin-bottom: 0.5rem;
+            color: #1A1A1A;
         }
 
         .info-card p {
-            opacity: 0.9;
+            color: #6B6B6B;
             font-size: 0.95rem;
         }
 
         .start-button {
-            background: linear-gradient(135deg, #fbbf24, #f59e0b);
-            color: #1e293b;
+            background: #222222;
+            color: white;
             font-size: 1.3rem;
             padding: 1.2rem 3rem;
-            border: none;
-            border-radius: 3rem;
+            border: 2px solid #222222;
+            border-radius: 0.5rem;
             cursor: pointer;
-            font-weight: 700;
+            font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(251, 191, 36, 0.4);
             display: inline-flex;
             align-items: center;
             gap: 0.8rem;
         }
 
         .start-button:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 12px 32px rgba(251, 191, 36, 0.6);
+            background: transparent;
+            color: #222222;
+            transform: translateY(-2px);
         }
 
         /* Game Screen */
@@ -144,7 +147,7 @@
         }
 
         .progress-bar {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(46, 46, 46, 0.1);
             height: 8px;
             border-radius: 1rem;
             margin-bottom: 2rem;
@@ -152,29 +155,29 @@
         }
 
         .progress-fill {
-            background: linear-gradient(90deg, #fbbf24, #f59e0b);
+            background: linear-gradient(90deg, #B08BBB, #C7B8EA);
             height: 100%;
             transition: width 0.5s ease;
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.8);
         }
 
         .round-info {
             text-align: center;
-            color: white;
+            color: #1A1A1A;
             margin-bottom: 2rem;
         }
 
         .round-number {
             font-size: 1.1rem;
-            opacity: 0.9;
+            color: #6B6B6B;
             margin-bottom: 0.5rem;
         }
 
         .scenario-card {
             background: white;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             padding: 2.5rem;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border: 1px solid #E2E0DD;
             margin-bottom: 2rem;
         }
 
@@ -184,12 +187,13 @@
         }
 
         .audio-placeholder {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: #F8F7F5;
+            color: #1A1A1A;
             padding: 2rem;
             border-radius: 1rem;
             margin: 2rem 0;
             text-align: center;
+            border: 2px solid #E2E0DD;
         }
 
         .audio-placeholder i {
@@ -197,12 +201,13 @@
             margin-bottom: 1rem;
             display: block;
             animation: pulse 2s infinite;
+            color: #B08BBB;
         }
 
         .scenario-text {
             font-size: 1.8rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #1A1A1A;
             margin: 1.5rem 0;
             text-align: center;
             font-style: italic;
@@ -222,31 +227,32 @@
         }
 
         .lexical-cue {
-            background: #dbeafe;
-            border-left: 4px solid #2563eb;
+            background: #F0F4FF;
+            border-left: 4px solid #2E2E2E;
         }
 
         .acoustic-cue {
-            background: #fef3c7;
-            border-left: 4px solid #f59e0b;
+            background: #FEF9F0;
+            border-left: 4px solid #B08BBB;
         }
 
         .cue-label {
             font-size: 0.9rem;
             font-weight: 600;
             text-transform: uppercase;
-            color: #64748b;
+            color: #6B6B6B;
             margin-bottom: 0.5rem;
         }
 
         .cue-value {
             font-size: 1.1rem;
             font-weight: 700;
+            color: #1A1A1A;
         }
 
         .question {
             font-size: 1.2rem;
-            color: #1e293b;
+            color: #1A1A1A;
             margin: 2rem 0 1.5rem;
             text-align: center;
             font-weight: 600;
@@ -260,27 +266,28 @@
         }
 
         .emotion-button {
-            background: #f1f5f9;
-            border: 3px solid transparent;
+            background: #F8F7F5;
+            border: 2px solid #E2E0DD;
             padding: 1.2rem;
-            border-radius: 1rem;
+            border-radius: 0.5rem;
             cursor: pointer;
             transition: all 0.3s ease;
             font-size: 1rem;
             font-weight: 600;
-            color: #1e293b;
+            color: #1A1A1A;
         }
 
         .emotion-button:hover {
-            background: #e2e8f0;
+            background: #F0F4FF;
+            border-color: #B08BBB;
             transform: translateY(-3px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(176, 139, 187, 0.2);
         }
 
         .emotion-button.selected {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #2E2E2E;
             color: white;
-            border-color: #667eea;
+            border-color: #2E2E2E;
             transform: scale(1.05);
         }
 
@@ -289,8 +296,9 @@
             display: none;
             margin-top: 2rem;
             padding: 2rem;
-            background: #f8fafc;
+            background: #F8F7F5;
             border-radius: 1rem;
+            border: 1px solid #E2E0DD;
         }
 
         .ai-response.show {
@@ -301,7 +309,7 @@
         .ai-header {
             font-size: 1.3rem;
             font-weight: 700;
-            color: #1e293b;
+            color: #1A1A1A;
             margin-bottom: 1.5rem;
             text-align: center;
         }
@@ -317,22 +325,22 @@
             background: white;
             padding: 1.2rem;
             border-radius: 0.75rem;
-            border-left: 4px solid #94a3b8;
+            border-left: 4px solid #E2E0DD;
         }
 
         .ai-prediction.correct {
-            border-left-color: #10b981;
-            background: #f0fdf4;
+            border-left-color: #4E9A77;
+            background: #F0FDF4;
         }
 
         .ai-prediction.incorrect {
-            border-left-color: #ef4444;
-            background: #fef2f2;
+            border-left-color: #B66161;
+            background: #FEF2F2;
         }
 
         .ai-name {
             font-weight: 700;
-            color: #1e293b;
+            color: #1A1A1A;
             margin-bottom: 0.5rem;
             display: flex;
             align-items: center;
@@ -341,11 +349,11 @@
 
         .ai-guess {
             font-size: 1.1rem;
-            color: #64748b;
+            color: #6B6B6B;
         }
 
         .correct-answer {
-            background: linear-gradient(135deg, #10b981, #059669);
+            background: linear-gradient(135deg, #4E9A77, #3A7A5D);
             color: white;
             padding: 1.5rem;
             border-radius: 1rem;
@@ -365,24 +373,24 @@
         }
 
         .insight-box {
-            background: #eff6ff;
-            border-left: 4px solid #2563eb;
+            background: #F0F4FF;
+            border-left: 4px solid #B08BBB;
             padding: 1.5rem;
             border-radius: 0.5rem;
             margin: 1.5rem 0;
         }
 
         .insight-box i {
-            color: #2563eb;
+            color: #B08BBB;
             margin-right: 0.5rem;
         }
 
         .next-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: #222222;
             color: white;
-            border: none;
+            border: 2px solid #222222;
             padding: 1rem 2.5rem;
-            border-radius: 2rem;
+            border-radius: 0.5rem;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
@@ -392,14 +400,15 @@
         }
 
         .next-button:hover {
+            background: transparent;
+            color: #222222;
             transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
         }
 
         /* Results Screen */
         .results-screen {
             display: none;
-            color: white;
+            color: #1A1A1A;
             text-align: center;
         }
 
@@ -411,23 +420,24 @@
         .trophy-icon {
             width: 150px;
             height: 150px;
-            background: rgba(255, 255, 255, 0.15);
+            background: white;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 2rem auto;
-            backdrop-filter: blur(10px);
+            border: 2px solid #E2E0DD;
         }
 
         .trophy-icon i {
             font-size: 4rem;
-            color: #fbbf24;
+            color: #C8A44B;
         }
 
         .results-title {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            color: #222222;
         }
 
         .score-summary {
@@ -438,42 +448,41 @@
         }
 
         .score-card {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: white;
             padding: 2rem;
             border-radius: 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid #E2E0DD;
         }
 
         .score-card.winner {
-            border: 2px solid #fbbf24;
-            box-shadow: 0 0 30px rgba(251, 191, 36, 0.5);
+            border: 2px solid #C8A44B;
+            box-shadow: 0 0 30px rgba(200, 164, 75, 0.3);
         }
 
         .score-label {
             font-size: 1rem;
-            opacity: 0.9;
+            color: #6B6B6B;
             margin-bottom: 0.5rem;
         }
 
         .score-value {
             font-size: 2.5rem;
             font-weight: 700;
-            color: #fbbf24;
+            color: #B08BBB;
         }
 
         .profile-section {
-            background: rgba(255, 255, 255, 0.15);
-            backdrop-filter: blur(10px);
+            background: white;
             padding: 2.5rem;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             margin: 2rem 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid #E2E0DD;
         }
 
         .profile-title {
             font-size: 1.8rem;
             margin-bottom: 2rem;
+            color: #222222;
         }
 
         .profile-bars {
@@ -490,19 +499,21 @@
             justify-content: space-between;
             margin-bottom: 0.5rem;
             font-weight: 600;
+            color: #1A1A1A;
         }
 
         .bar-container {
-            background: rgba(255, 255, 255, 0.2);
+            background: #F8F7F5;
             height: 40px;
-            border-radius: 2rem;
+            border-radius: 0.5rem;
             overflow: hidden;
             position: relative;
+            border: 1px solid #E2E0DD;
         }
 
         .bar-fill {
             height: 100%;
-            border-radius: 2rem;
+            border-radius: 0.5rem;
             transition: width 1s ease;
             display: flex;
             align-items: center;
@@ -511,39 +522,40 @@
         }
 
         .bar-fill.lexical {
-            background: linear-gradient(90deg, #2563eb, #3b82f6);
+            background: linear-gradient(90deg, #2E2E2E, #4A4A4A);
         }
 
         .bar-fill.acoustic {
-            background: linear-gradient(90deg, #f59e0b, #fbbf24);
+            background: linear-gradient(90deg, #B08BBB, #C7B8EA);
         }
 
         .profile-verdict {
-            background: rgba(251, 191, 36, 0.2);
-            border: 2px solid #fbbf24;
+            background: #FEF9F0;
+            border: 2px solid #C8A44B;
             padding: 1.5rem;
             border-radius: 1rem;
             margin-top: 2rem;
             font-size: 1.1rem;
             line-height: 1.8;
+            color: #1A1A1A;
         }
 
         .research-cta {
-            background: white;
-            color: #1e293b;
+            background: #222222;
+            color: white;
             padding: 2.5rem;
-            border-radius: 1.5rem;
+            border-radius: 1rem;
             margin: 3rem 0;
         }
 
         .research-cta h3 {
             font-size: 1.8rem;
             margin-bottom: 1rem;
-            color: #1e293b;
+            color: white;
         }
 
         .research-cta p {
-            color: #64748b;
+            color: rgba(255, 255, 255, 0.85);
             margin-bottom: 1.5rem;
             line-height: 1.8;
         }
@@ -557,7 +569,7 @@
 
         .cta-button {
             padding: 1rem 2rem;
-            border-radius: 2rem;
+            border-radius: 0.5rem;
             text-decoration: none;
             font-weight: 600;
             transition: all 0.3s ease;
@@ -567,30 +579,32 @@
         }
 
         .cta-primary {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
+            background: white;
+            color: #222222;
+            border: 2px solid white;
         }
 
         .cta-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.4);
+            background: transparent;
+            color: white;
         }
 
         .cta-secondary {
-            background: #f1f5f9;
-            color: #1e293b;
+            background: transparent;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.3);
         }
 
         .cta-secondary:hover {
-            background: #e2e8f0;
+            border-color: white;
         }
 
         .restart-button {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 2px solid white;
+            background: transparent;
+            color: #222222;
+            border: 2px solid #222222;
             padding: 1rem 2.5rem;
-            border-radius: 2rem;
+            border-radius: 0.5rem;
             font-size: 1.1rem;
             font-weight: 600;
             cursor: pointer;
@@ -599,8 +613,8 @@
         }
 
         .restart-button:hover {
-            background: white;
-            color: #667eea;
+            background: #222222;
+            color: white;
         }
 
         /* Animations */
@@ -809,7 +823,7 @@
                 <p>This challenge is based on the LISTEN benchmark, which reveals that most Audio LLMs over-rely on
                     lexical cues and struggle with acoustic emotion recognition—especially when cues conflict.</p>
                 <div class="cta-buttons">
-                    <a href="https://github.com/DeliJingyiC/LISTEN" class="cta-button cta-primary">
+                    <a href="https://github.com/DeliJingyiC/LISTEN" class="cta-button cta-primary" target="_blank">
                         <i class="fab fa-github"></i> View Research
                     </a>
                     <a href="index.html#leaderboard" class="cta-button cta-secondary">
@@ -825,7 +839,6 @@
     </div>
 
     <script>
-        // Game data
         const scenarios = [
             {
                 text: "I'm so happy right now!",
@@ -906,18 +919,13 @@
 
         function loadScenario() {
             const scenario = scenarios[currentRound];
-
-            // Update progress
             const progress = ((currentRound + 1) / scenarios.length) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
             document.getElementById('roundNumber').textContent = `Round ${currentRound + 1} of ${scenarios.length}`;
-
-            // Update scenario content
             document.getElementById('scenarioText').textContent = `"${scenario.text}"`;
             document.getElementById('lexicalCue').textContent = scenario.lexical.charAt(0).toUpperCase() + scenario.lexical.slice(1);
             document.getElementById('acousticCue').textContent = scenario.acoustic.charAt(0).toUpperCase() + scenario.acoustic.slice(1);
 
-            // Load emotion buttons
             const emotionGrid = document.getElementById('emotionGrid');
             emotionGrid.innerHTML = '';
             scenario.emotions.forEach(emotion => {
@@ -928,20 +936,16 @@
                 emotionGrid.appendChild(button);
             });
 
-            // Hide AI response
             document.getElementById('aiResponse').classList.remove('show');
         }
 
         function selectEmotion(emotion, button) {
-            // Remove previous selections
             document.querySelectorAll('.emotion-button').forEach(btn => {
                 btn.classList.remove('selected');
             });
 
-            // Select this button
             button.classList.add('selected');
 
-            // Record guess
             const scenario = scenarios[currentRound];
             const isCorrect = emotion === scenario.correct;
 
@@ -952,7 +956,6 @@
                 reliedOn: emotion === scenario.lexical ? 'lexical' : 'acoustic'
             });
 
-            // Update scores
             if (isCorrect) scores.user++;
             Object.keys(scenario.aiPredictions).forEach(model => {
                 if (scenario.aiPredictions[model].correct) {
@@ -960,16 +963,13 @@
                 }
             });
 
-            // Show AI response
             showAIResponse(scenario);
         }
 
         function showAIResponse(scenario) {
-            // Update correct answer
             document.getElementById('correctEmotion').textContent =
                 scenario.correct.charAt(0).toUpperCase() + scenario.correct.slice(1);
 
-            // Update AI predictions
             const aiGrid = document.getElementById('aiGrid');
             aiGrid.innerHTML = '';
 
@@ -981,7 +981,7 @@
                     <div class="ai-name">
                         <i class="fas fa-robot"></i>
                         ${model}
-                        ${prediction.correct ? '<i class="fas fa-check-circle" style="color: #10b981;"></i>' : '<i class="fas fa-times-circle" style="color: #ef4444;"></i>'}
+                        ${prediction.correct ? '<i class="fas fa-check-circle" style="color: #4E9A77;"></i>' : '<i class="fas fa-times-circle" style="color: #B66161;"></i>'}
                     </div>
                     <div class="ai-guess">
                         Guessed: ${prediction.guess.charAt(0).toUpperCase() + prediction.guess.slice(1)}
@@ -992,10 +992,7 @@
                 aiGrid.appendChild(div);
             });
 
-            // Update insight
             document.getElementById('insightText').textContent = scenario.insight;
-
-            // Show response
             document.getElementById('aiResponse').classList.add('show');
         }
 
@@ -1012,17 +1009,14 @@
             document.getElementById('gameScreen').classList.remove('active');
             document.getElementById('resultsScreen').classList.add('active');
 
-            // Calculate profile
             const lexicalCount = userGuesses.filter(g => g.reliedOn === 'lexical').length;
             const acousticCount = userGuesses.filter(g => g.reliedOn === 'acoustic').length;
             const lexicalPercent = Math.round((lexicalCount / userGuesses.length) * 100);
             const acousticPercent = Math.round((acousticCount / userGuesses.length) * 100);
 
-            // Update scores
             const scoreSummary = document.getElementById('scoreSummary');
             scoreSummary.innerHTML = '';
 
-            // Sort scores
             const sortedScores = Object.entries(scores).sort((a, b) => b[1] - a[1]);
 
             sortedScores.forEach(([name, score]) => {
@@ -1038,7 +1032,6 @@
                 scoreSummary.appendChild(div);
             });
 
-            // Update profile bars with animation
             setTimeout(() => {
                 document.getElementById('lexicalBar').style.width = lexicalPercent + '%';
                 document.getElementById('acousticBar').style.width = acousticPercent + '%';
@@ -1046,7 +1039,6 @@
                 document.getElementById('acousticPercent').textContent = acousticPercent + '%';
             }, 500);
 
-            // Update verdict
             const verdict = document.getElementById('profileVerdict');
             let verdictText = '';
 

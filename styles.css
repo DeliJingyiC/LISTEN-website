@@ -186,9 +186,11 @@ body {
     display: inline-block;
     position: relative;
     min-width: 240px;
+    width: 240px;
     height: 1.2em;
     vertical-align: baseline;
     text-align: left;
+    margin-right: 0.2em;
 }
 
 .flip-word {
