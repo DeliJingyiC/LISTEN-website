@@ -188,7 +188,7 @@ body {
     min-width: 280px;
     width: 280px;
     height: 1.2em;
-    vertical-align: baseline;
+    vertical-align: text-bottom;
     text-align: left;
     margin-right: 0.5em;
 }
