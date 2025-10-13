@@ -204,6 +204,28 @@
             color: #B08BBB;
         }
 
+        .audio-player {
+            background: #F8F7F5;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin: 2rem 0;
+            text-align: center;
+            border: 2px solid #E2E0DD;
+        }
+
+        .audio-player audio {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 1rem;
+        }
+
+        .audio-player i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+            color: #B08BBB;
+        }
+
         .scenario-text {
             font-size: 1.8rem;
             font-weight: 600;
@@ -692,7 +714,7 @@
             </div>
 
             <p class="intro-text">
-                Can you tell when someone's words don't match their tone?
+                Can you recognize emotions better than AI?
                 Test your emotional intelligence against leading Audio LLMs!
             </p>
 
@@ -700,17 +722,17 @@
                 <div class="info-card">
                     <i class="fas fa-brain"></i>
                     <h3>Test Your Skills</h3>
-                    <p>Identify true emotions from conflicting cues</p>
+                    <p>Identify emotions from text and audio clips</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-robot"></i>
                     <h3>Beat the AI</h3>
-                    <p>Compete against GPT-4, Gemini, and Qwen</p>
+                    <p>Compete against Gemini, Qwen, and Baichuan</p>
                 </div>
                 <div class="info-card">
                     <i class="fas fa-chart-line"></i>
                     <h3>Discover Your Profile</h3>
-                    <p>Are you more lexical or acoustic?</p>
+                    <p>Are you better with text or audio?</p>
                 </div>
             </div>
 
@@ -726,31 +748,23 @@
             </div>
 
             <div class="round-info">
-                <div class="round-number" id="roundNumber">Round 1 of 5</div>
+                <div class="round-number" id="roundNumber">Round 1 of 6</div>
             </div>
 
             <div class="scenario-card">
                 <div class="scenario-header">
-                    <div class="audio-placeholder">
+                    <div class="audio-player" id="audioPlayer" style="display: none;">
                         <i class="fas fa-volume-up"></i>
                         <div>Listen to the audio clip</div>
-                        <small>(Audio simulation)</small>
+                        <audio controls id="audioElement">
+                            <source id="audioSource" src="" type="audio/wav">
+                            Your browser does not support the audio element.
+                        </audio>
                     </div>
-                    <p class="scenario-text" id="scenarioText">"I'm so happy right now!"</p>
-
-                    <div class="cue-info">
-                        <div class="cue-box lexical-cue">
-                            <div class="cue-label">Words Say</div>
-                            <div class="cue-value" id="lexicalCue">Happy</div>
-                        </div>
-                        <div class="cue-box acoustic-cue">
-                            <div class="cue-label">Voice Sounds</div>
-                            <div class="cue-value" id="acousticCue">Sad/Defeated</div>
-                        </div>
-                    </div>
+                    <p class="scenario-text" id="scenarioText" style="display: none;"></p>
                 </div>
 
-                <p class="question">What emotion is the speaker REALLY feeling?</p>
+                <p class="question">What emotion is being expressed?</p>
 
                 <div class="emotion-grid" id="emotionGrid">
                     <!-- Emotions will be populated by JS -->
@@ -792,11 +806,11 @@
             </div>
 
             <div class="profile-section">
-                <h3 class="profile-title">Your Emotion Processing Profile</h3>
+                <h3 class="profile-title">Your Emotion Recognition Profile</h3>
                 <div class="profile-bars">
                     <div class="profile-bar">
                         <div class="bar-label">
-                            <span>📝 Lexical (Words)</span>
+                            <span>📝 Text-Based Questions</span>
                             <span id="lexicalPercent">0%</span>
                         </div>
                         <div class="bar-container">
@@ -805,7 +819,7 @@
                     </div>
                     <div class="profile-bar">
                         <div class="bar-label">
-                            <span>🎵 Acoustic (Tone)</span>
+                            <span>🎵 Audio-Based Questions</span>
                             <span id="acousticPercent">0%</span>
                         </div>
                         <div class="bar-container">
@@ -840,76 +854,104 @@
 
     <script>
         const scenarios = [
+            // Text-only questions
             {
-                text: "I'm so happy right now!",
-                lexical: "happy",
-                acoustic: "sad/defeated",
-                correct: "sad",
-                emotions: ["happy", "sad", "angry", "excited", "calm", "frustrated"],
+                type: "text",
+                text: "Yeah, it's a great time to be alive, isn't it?",
+                correct: "happiness",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
                 aiPredictions: {
-                    "GPT-4o": { guess: "happy", correct: false, relied: "lexical" },
-                    "Gemini 2.5": { guess: "happy", correct: false, relied: "lexical" },
-                    "Qwen-Omni": { guess: "sad", correct: true, relied: "acoustic" }
+                    "Gemini 2.5 Pro": { guess: "happiness", correct: true },
+                    "Gemini 2.5 Flash": { guess: "happiness", correct: true },
+                    "Qwen3-Omni": { guess: "happiness", correct: true },
+                    "Qwen2.5-Omni": { guess: "happiness", correct: true },
+                    "Baichuan-Omni": { guess: "happiness", correct: true }
                 },
-                insight: "Most AI models got fooled by the happy words and missed the sad tone. Only Qwen-Omni caught the acoustic cues!"
+                insight: "All AI models correctly identified the positive sentiment! This straightforward expression of happiness is easy for both humans and AI to recognize."
             },
             {
-                text: "This is absolutely terrible...",
-                lexical: "negative",
-                acoustic: "excited/energetic",
-                correct: "excited",
-                emotions: ["negative", "excited", "angry", "sad", "happy", "calm"],
+                type: "text",
+                text: "Great! Now we can do laundry all night. All night laundry!",
+                correct: "happiness",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
                 aiPredictions: {
-                    "GPT-4o": { guess: "negative", correct: false, relied: "lexical" },
-                    "Gemini 2.5": { guess: "negative", correct: false, relied: "lexical" },
-                    "Qwen-Omni": { guess: "excited", correct: true, relied: "acoustic" }
+                    "Gemini 2.5 Pro": { guess: "frustration", correct: false },
+                    "Gemini 2.5 Flash": { guess: "happiness", correct: true },
+                    "Qwen3-Omni": { guess: "happiness", correct: true },
+                    "Qwen2.5-Omni": { guess: "happiness", correct: true },
+                    "Baichuan-Omni": { guess: "ridicule", correct: false }
                 },
-                insight: "This is sarcasm! The speaker is actually excited about something 'terrible' (probably great). Most AIs missed the playful tone."
+                insight: "This is sarcastic happiness! The speaker is genuinely excited about doing laundry. Some models missed the sincere enthusiasm and detected sarcasm where there was none."
+            },
+            // Audio questions
+            {
+                type: "audio",
+                audio: "/users/PAS2062/delijingyic/project/LISTEN-website/Ses01F_impro05_F021.wav",
+                correct: "anger",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
+                aiPredictions: {
+                    "Gemini 2.5 Pro": { guess: "anger", correct: true },
+                    "Gemini 2.5 Flash": { guess: "anger", correct: true },
+                    "Qwen3-Omni": { guess: "anger", correct: true },
+                    "Qwen2.5-Omni": { guess: "anger", correct: true },
+                    "Baichuan-Omni": { guess: "anger", correct: true }
+                },
+                insight: "Perfect score for the AI models! The angry tone is clear and unmistakable in this audio clip."
             },
             {
-                text: "I'm scared...",
-                lexical: "fear",
-                acoustic: "calm/confident",
-                correct: "calm",
-                emotions: ["fear", "calm", "sad", "angry", "excited", "happy"],
+                type: "audio",
+                audio: "/users/PAS2062/delijingyic/project/LISTEN-website/Ses02F_impro03_M012.wav",
+                correct: "happiness",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
                 aiPredictions: {
-                    "GPT-4o": { guess: "fear", correct: false, relied: "lexical" },
-                    "Gemini 2.5": { guess: "fear", correct: false, relied: "lexical" },
-                    "Qwen-Omni": { guess: "calm", correct: true, relied: "acoustic" }
+                    "Gemini 2.5 Pro": { guess: "excitement", correct: false },
+                    "Gemini 2.5 Flash": { guess: "excitement", correct: false },
+                    "Qwen3-Omni": { guess: "surprise", correct: false },
+                    "Qwen2.5-Omni": { guess: "fear", correct: false },
+                    "Baichuan-Omni": { guess: "fear", correct: false }
                 },
-                insight: "The speaker is recounting a past fear calmly. The confident tone reveals they're no longer scared—but AI models fixated on the word 'scared'."
+                insight: "All models failed! They confused happiness with excitement, surprise, or fear. This shows how challenging it is to distinguish between high-arousal positive emotions."
             },
             {
-                text: "That's just perfect.",
-                lexical: "positive",
-                acoustic: "frustrated/angry",
-                correct: "frustrated",
-                emotions: ["positive", "frustrated", "angry", "sad", "happy", "calm"],
+                type: "audio",
+                audio: "/users/PAS2062/delijingyic/project/LISTEN-website/2_155_u.wav",
+                correct: "anger",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
                 aiPredictions: {
-                    "GPT-4o": { guess: "positive", correct: false, relied: "lexical" },
-                    "Gemini 2.5": { guess: "positive", correct: false, relied: "lexical" },
-                    "Qwen-Omni": { guess: "frustrated", correct: true, relied: "acoustic" }
+                    "Gemini 2.5 Pro": { guess: "anger", correct: true },
+                    "Gemini 2.5 Flash": { guess: "ridicule", correct: false },
+                    "Qwen3-Omni": { guess: "excitement", correct: false },
+                    "Qwen2.5-Omni": { guess: "ridicule", correct: false },
+                    "Baichuan-Omni": { guess: "ridicule", correct: false }
                 },
-                insight: "Classic sarcasm! 'Perfect' said with frustration means the opposite. Humans catch this instantly, but most AIs struggle."
+                insight: "Only Gemini 2.5 Pro got this right! Most models confused anger with ridicule or even excitement, showing how subtle differences in tone can fool AI."
             },
             {
-                text: "I love this so much!",
-                lexical: "love",
-                acoustic: "angry/irritated",
-                correct: "angry",
-                emotions: ["love", "angry", "frustrated", "sad", "happy", "excited"],
+                type: "audio",
+                audio: "/users/PAS2062/delijingyic/project/LISTEN-website/1_5166_u.wav",
+                correct: "disgust",
+                emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"],
                 aiPredictions: {
-                    "GPT-4o": { guess: "love", correct: false, relied: "lexical" },
-                    "Gemini 2.5": { guess: "love", correct: false, relied: "lexical" },
-                    "Qwen-Omni": { guess: "angry", correct: true, relied: "acoustic" }
+                    "Gemini 2.5 Pro": { guess: "frustration", correct: false },
+                    "Gemini 2.5 Flash": { guess: "happiness", correct: false },
+                    "Qwen3-Omni": { guess: "ridicule", correct: false },
+                    "Qwen2.5-Omni": { guess: "ridicule", correct: false },
+                    "Baichuan-Omni": { guess: "ridicule", correct: false }
                 },
-                insight: "The angriest 'love' you'll ever hear! This shows how tone can completely flip the meaning of words."
+                insight: "Complete AI failure! No model recognized the disgust. This is a particularly challenging emotion that even state-of-the-art models struggle with."
             }
         ];
 
         let currentRound = 0;
         let userGuesses = [];
-        let scores = { user: 0, "GPT-4o": 0, "Gemini 2.5": 0, "Qwen-Omni": 0 };
+        let scores = {
+            user: 0,
+            "Gemini 2.5 Pro": 0,
+            "Gemini 2.5 Flash": 0,
+            "Qwen3-Omni": 0,
+            "Qwen2.5-Omni": 0,
+            "Baichuan-Omni": 0
+        };
 
         function startGame() {
             document.getElementById('introScreen').classList.remove('active');
@@ -922,9 +964,23 @@
             const progress = ((currentRound + 1) / scenarios.length) * 100;
             document.getElementById('progressBar').style.width = progress + '%';
             document.getElementById('roundNumber').textContent = `Round ${currentRound + 1} of ${scenarios.length}`;
-            document.getElementById('scenarioText').textContent = `"${scenario.text}"`;
-            document.getElementById('lexicalCue').textContent = scenario.lexical.charAt(0).toUpperCase() + scenario.lexical.slice(1);
-            document.getElementById('acousticCue').textContent = scenario.acoustic.charAt(0).toUpperCase() + scenario.acoustic.slice(1);
+
+            // Handle text vs audio scenarios
+            const audioPlayer = document.getElementById('audioPlayer');
+            const scenarioText = document.getElementById('scenarioText');
+            const audioElement = document.getElementById('audioElement');
+            const audioSource = document.getElementById('audioSource');
+
+            if (scenario.type === 'audio') {
+                audioPlayer.style.display = 'block';
+                scenarioText.style.display = 'none';
+                audioSource.src = scenario.audio;
+                audioElement.load();
+            } else {
+                audioPlayer.style.display = 'none';
+                scenarioText.style.display = 'block';
+                scenarioText.textContent = `"${scenario.text}"`;
+            }
 
             const emotionGrid = document.getElementById('emotionGrid');
             emotionGrid.innerHTML = '';
@@ -952,8 +1008,7 @@
             userGuesses.push({
                 round: currentRound,
                 guess: emotion,
-                correct: isCorrect,
-                reliedOn: emotion === scenario.lexical ? 'lexical' : 'acoustic'
+                correct: isCorrect
             });
 
             if (isCorrect) scores.user++;
@@ -985,8 +1040,6 @@
                     </div>
                     <div class="ai-guess">
                         Guessed: ${prediction.guess.charAt(0).toUpperCase() + prediction.guess.slice(1)}
-                        <br>
-                        <small style="opacity: 0.7;">Relied on: ${prediction.relied}</small>
                     </div>
                 `;
                 aiGrid.appendChild(div);
@@ -1009,10 +1062,12 @@
             document.getElementById('gameScreen').classList.remove('active');
             document.getElementById('resultsScreen').classList.add('active');
 
-            const lexicalCount = userGuesses.filter(g => g.reliedOn === 'lexical').length;
-            const acousticCount = userGuesses.filter(g => g.reliedOn === 'acoustic').length;
-            const lexicalPercent = Math.round((lexicalCount / userGuesses.length) * 100);
-            const acousticPercent = Math.round((acousticCount / userGuesses.length) * 100);
+            const textCorrect = userGuesses.filter((g, i) => g.correct && scenarios[i].type === 'text').length;
+            const audioCorrect = userGuesses.filter((g, i) => g.correct && scenarios[i].type === 'audio').length;
+            const textTotal = scenarios.filter(s => s.type === 'text').length;
+            const audioTotal = scenarios.filter(s => s.type === 'audio').length;
+            const textPercent = textTotal > 0 ? Math.round((textCorrect / textTotal) * 100) : 0;
+            const audioPercent = audioTotal > 0 ? Math.round((audioCorrect / audioTotal) * 100) : 0;
 
             const scoreSummary = document.getElementById('scoreSummary');
             scoreSummary.innerHTML = '';
@@ -1033,26 +1088,29 @@
             });
 
             setTimeout(() => {
-                document.getElementById('lexicalBar').style.width = lexicalPercent + '%';
-                document.getElementById('acousticBar').style.width = acousticPercent + '%';
-                document.getElementById('lexicalPercent').textContent = lexicalPercent + '%';
-                document.getElementById('acousticPercent').textContent = acousticPercent + '%';
+                document.getElementById('lexicalBar').style.width = textPercent + '%';
+                document.getElementById('acousticBar').style.width = audioPercent + '%';
+                document.getElementById('lexicalPercent').textContent = textPercent + '%';
+                document.getElementById('acousticPercent').textContent = audioPercent + '%';
             }, 500);
 
             const verdict = document.getElementById('profileVerdict');
             let verdictText = '';
 
-            if (lexicalPercent > 70) {
-                verdictText = '📖 <strong>Lexical Processor:</strong> You rely heavily on words and semantic meaning. Like most AI models, you might miss subtle vocal cues. Try focusing more on tone!';
-            } else if (acousticPercent > 70) {
-                verdictText = '🎵 <strong>Acoustic Expert:</strong> You excel at reading tone and prosody! This is rare—you caught what most AI models miss. Your ears are sharper than GPT-4!';
+            const aiScores = Object.entries(scores).filter(([name]) => name !== 'user').map(([, score]) => score);
+            const maxAiScore = Math.max(...aiScores);
+
+            if (textPercent > audioPercent && textPercent >= 75) {
+                verdictText = '📖 <strong>Text Expert:</strong> You excel at reading emotional content from written text! Your comprehension skills are sharp.';
+            } else if (audioPercent > textPercent && audioPercent >= 75) {
+                verdictText = '🎵 <strong>Audio Expert:</strong> You have a great ear for vocal emotions! You can pick up on subtle acoustic cues that many miss.';
             } else {
-                verdictText = '⚖️ <strong>Balanced Processor:</strong> You use both words and tone effectively. This balanced approach often leads to the best emotion recognition. You\'re like Gemini 2.5 Pro!';
+                verdictText = '⚖️ <strong>Balanced Recognizer:</strong> You perform well with both text and audio emotion recognition. This balanced skill set is valuable!';
             }
 
             if (scores.user === scenarios.length) {
-                verdictText += '<br><br>🏆 <strong>Perfect Score!</strong> You beat all the AI models. You should be analyzing emotions, not them!';
-            } else if (scores.user >= Math.max(scores["GPT-4o"], scores["Gemini 2.5"], scores["Qwen-Omni"])) {
+                verdictText += '<br><br>🏆 <strong>Perfect Score!</strong> You beat all the AI models. Your emotional intelligence is exceptional!';
+            } else if (scores.user >= maxAiScore) {
                 verdictText += '<br><br>🎉 <strong>You beat the AIs!</strong> Your emotional intelligence surpasses current state-of-the-art models.';
             }
 
@@ -1062,7 +1120,14 @@
         function restartGame() {
             currentRound = 0;
             userGuesses = [];
-            scores = { user: 0, "GPT-4o": 0, "Gemini 2.5": 0, "Qwen-Omni": 0 };
+            scores = {
+                user: 0,
+                "Gemini 2.5 Pro": 0,
+                "Gemini 2.5 Flash": 0,
+                "Qwen3-Omni": 0,
+                "Qwen2.5-Omni": 0,
+                "Baichuan-Omni": 0
+            };
 
             document.getElementById('resultsScreen').classList.remove('active');
             document.getElementById('introScreen').classList.add('active');
