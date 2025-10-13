@@ -812,15 +812,15 @@
                 document.getElementById('textPercent').textContent = Math.round(textPercent) + '%';
                 document.getElementById('audioPercent').textContent = Math.round(audioPercent) + '%';
             }, 300);
-            let message = '';
-            if (correctCount === gameQuestions.length) {
-                message = '🏆 <strong>Perfect Score!</strong> You beat all the AI models!';
-            } else if (correctCount >= maxScore) {
-                message = '🎉 <strong>Impressive!</strong> You matched or beat the best AI models.';
-            } else {
-                message = `You scored ${correctCount}/${gameQuestions.length}. ${audioPercent > textPercent ? "You're stronger with audio!" : "You're stronger with text!"}`;
-            }
-            document.getElementById('resultsMessage').innerHTML = message;
+            // let message = '';
+            // if (correctCount === gameQuestions.length) {
+            //     message = '🏆 <strong>Perfect Score!</strong> You beat all the AI models!';
+            // } else if (correctCount >= maxScore) {
+            //     message = '🎉 <strong>Impressive!</strong> You matched or beat the best AI models.';
+            // } else {
+            //     message = `You scored ${correctCount}/${gameQuestions.length}. ${audioPercent > textPercent ? "You're stronger with audio!" : "You're stronger with text!"}`;
+            // }
+            // document.getElementById('resultsMessage').innerHTML = message;
         }
 
         function restartChallenge() {
