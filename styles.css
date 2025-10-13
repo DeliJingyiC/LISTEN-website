@@ -114,8 +114,8 @@ body {
 .hero {
     background: var(--bg-cream);
     background-image: url('background_image3.png');
-    background-size: contain;
-    background-position: right center;
+    background-size: 50%;
+    background-position: right 5% center;
     background-repeat: no-repeat;
     color: var(--navy);
     padding: 5rem 0 6rem;
@@ -133,11 +133,12 @@ body {
 
 .hero-content {
     text-align: left;
-    max-width: 55%;
-    background: rgba(250, 248, 245, 0.85);
-    padding: 2rem;
+    max-width: 48%;
+    background: rgba(250, 248, 245, 0.92);
+    padding: 2rem 2.5rem;
     border-radius: 1rem;
     backdrop-filter: blur(5px);
+    margin-right: 2rem;
 }
 
 .hero-visual {
@@ -185,7 +186,7 @@ body {
 .flip-words {
     display: inline-block;
     position: relative;
-    min-width: 200px;
+    min-width: 240px;
     height: 1.2em;
     vertical-align: baseline;
     text-align: left;
