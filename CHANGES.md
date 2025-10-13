@@ -107,3 +107,4 @@ The game button is no longer just a link—it's a highlighted challenge invitati
 6. ✅ Inspired by Thinking Machines Lab's minimalist approach
 
 
+
