@@ -115,7 +115,7 @@ body {
     background: var(--bg-cream);
     background-image: url('background_image2.png');
     background-size: contain;
-    background-position: right center;
+    background-position: right 5% center;
     background-repeat: no-repeat;
     color: var(--navy);
     padding: 5rem 0 6rem;
@@ -133,7 +133,7 @@ body {
 
 .hero-content {
     text-align: left;
-    max-width: 55%;
+    max-width: 60%;
     background: rgba(250, 248, 245, 0.85);
     padding: 2rem;
     border-radius: 1rem;
