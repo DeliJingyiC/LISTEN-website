@@ -1,6 +1,7 @@
 // Mobile menu toggle function
 function toggleMobileMenu() {
     console.log('toggleMobileMenu called');
+    alert('Hamburger menu clicked!'); // Temporary test
     const navLinks = document.getElementById('navLinks');
     const toggle = document.querySelector('.mobile-menu-toggle');
 

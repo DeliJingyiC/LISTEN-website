@@ -1332,6 +1332,48 @@ footer a:hover {
         font-size: 1rem;
         margin-bottom: 2rem;
     }
+
+    /* Additional mobile fixes */
+    /* Prevent horizontal scroll */
+    body {
+        overflow-x: hidden;
+    }
+
+    /* Ensure navigation doesn't wrap horizontally */
+    .navbar {
+        overflow-x: hidden;
+    }
+
+    /* Fix text overflow */
+    .model-name {
+        word-wrap: break-word;
+        max-width: 150px;
+    }
+
+    /* Better button spacing */
+    .btn-next-round,
+    .btn-restart,
+    .btn-view-full {
+        width: 100%;
+        max-width: 280px;
+        margin: 0.5rem auto;
+    }
+
+    /* Fix results actions */
+    .results-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Better trophy display */
+    .trophy-display {
+        width: 80px;
+        height: 80px;
+    }
+
+    .trophy-display i {
+        font-size: 2rem;
+    }
 }
 
 /* Additional mobile-specific fixes */
@@ -1441,53 +1483,6 @@ footer a:hover {
 
     .section h2 {
         font-size: 1.75rem;
-    }
-}
-
-/* Additional mobile fixes */
-@media (max-width: 768px) {
-
-    /* Prevent horizontal scroll */
-    body {
-        overflow-x: hidden;
-    }
-
-    /* Ensure navigation doesn't wrap horizontally */
-    .navbar {
-        overflow-x: hidden;
-    }
-
-    /* Remove conflicting nav-links styles for mobile */
-
-    /* Fix text overflow */
-    .model-name {
-        word-wrap: break-word;
-        max-width: 150px;
-    }
-
-    /* Better button spacing */
-    .btn-next-round,
-    .btn-restart,
-    .btn-view-full {
-        width: 100%;
-        max-width: 280px;
-        margin: 0.5rem auto;
-    }
-
-    /* Fix results actions */
-    .results-actions {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    /* Better trophy display */
-    .trophy-display {
-        width: 80px;
-        height: 80px;
-    }
-
-    .trophy-display i {
-        font-size: 2rem;
     }
 }
 
