@@ -1106,10 +1106,14 @@ footer a:hover {
         transition: left 0.3s ease !important;
         z-index: 1000 !important;
         display: flex !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
 
     .nav-links.active {
         left: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
     }
 
     .mobile-menu-close {
