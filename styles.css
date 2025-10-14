@@ -1083,12 +1083,14 @@ footer a:hover {
         padding: 0 1rem;
     }
 
-    /* Mobile navigation with hamburger menu */
+    /* Force mobile navigation to work */
     .mobile-menu-toggle {
         display: block !important;
         background: var(--primary-color) !important;
         border-radius: 4px !important;
         padding: 8px !important;
+        position: relative !important;
+        z-index: 1001 !important;
     }
 
     .nav-links {
@@ -1103,7 +1105,7 @@ footer a:hover {
         justify-content: center !important;
         align-items: center !important;
         gap: 2rem !important;
-        transition: left 0.3s ease !important;
+        transition: left 0.3s ease, opacity 0.3s ease, visibility 0.3s ease !important;
         z-index: 1000 !important;
         display: flex !important;
         opacity: 0 !important;
@@ -1382,7 +1384,7 @@ footer a:hover {
 
     /* Navigation fixes for small screens */
     .nav-links {
-        gap: 1.5rem;
+        gap: 1.5rem !important;
     }
 
     .nav-links a {
