@@ -1104,7 +1104,8 @@
                             <strong>Sample ID:</strong> <code>SAMPLE_9b76ea7d</code>
                         </div>
                         <div class="example-field">
-                            <strong>Transcription:</strong> <em>"What the hell is this?"</em>
+                            <strong>Transcription:</strong> <em>"You are cruising for a bruising. You are in so much
+                                trouble."</em>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Read the transcription and classify the emotion. From the semantic
@@ -1116,14 +1117,14 @@
                         </div>
                         <div class="example-results">
                             <div class="result-item">
-                                <strong>Ground Truth:</strong> <span class="badge-frustration">frustration</span>
+                                <strong>Ground Truth:</strong> <span class="badge-anger">anger</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-incorrect">D (neutral) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-incorrect">A (neutral) ✗</span>
                             </div>
                         </div>
                         <div class="example-note">
-                            The model misclassified an explicitly frustration utterance as neutral, illustrating
+                            The model misclassified an explicitly angry utterance as neutral, illustrating
                             overgeneralization across semantically related negative emotions.
                         </div>
                     </div>
@@ -1192,7 +1193,7 @@
                                 <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✓</span>
                             </div>
                         </div>
 
@@ -1221,10 +1222,10 @@
                         </div>
                         <div class="example-results">
                             <div class="result-item">
-                                <strong>Ground Truth :</strong> <span class="badge-frustration">frustration</span>
+                                <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-correct">D (frustration) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-correct">B (anger) ✓</span>
                             </div>
                         </div>
 
@@ -1292,7 +1293,7 @@
                                 <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-correct">D (anger) ✓</span>
                             </div>
                         </div>
 
@@ -1312,7 +1313,8 @@
                             <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05M_script01_1b_F030</code>
                         </div>
                         <div class="example-field">
-                            <strong>Transcription:</strong> <em>"What the hell is this?"</em>
+                            <strong>Transcription:</strong> <em>"You are cruising for a bruising. You are in so much
+                                trouble."</em>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
@@ -1324,10 +1326,10 @@
                         </div>
                         <div class="example-results">
                             <div class="result-item">
-                                <strong>Ground Truth :</strong> <span class="badge-frustration">frustration</span>
+                                <strong>Ground Truth :</strong> <span class="badge-anger">anger</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-correct">D (frustration) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-correct">B (anger) ✓ </span>
                             </div>
                         </div>
 
@@ -1398,16 +1400,15 @@
                         </div>
                         <div class="example-results">
                             <div class="result-item">
-                                <strong>Ground Truth:</strong> <span class="badge-excitement">excitement</span>
+                                <strong>Ground Truth:</strong> <span class="badge-excitement">sadness</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-incorrect">B (happiness) ✗</span>
+                                <strong>Model Prediction:</strong> <span class="badge-incorrect">D (sadness) ✓</span>
                             </div>
                         </div>
                         <div class="example-note">
-                            The utterance contains only nonverbal laughter. The model incorrectly classifies it as
-                            happiness, revealing challenges in distinguishing subtle affective intent from nonverbal
-                            vocalizations.
+                            The utterance contains only nonverbal sighs. The model correctly classifies it as
+                            sadness.
                         </div>
                     </div>
                 </div>
