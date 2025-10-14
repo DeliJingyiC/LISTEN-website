@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Audio Volume Test</title>
+</head>
+
+<body>
+    <h1>Audio Volume and Playback Test</h1>
+
+    <h2>Test 1: 1_8407_u.wav (Problematic)</h2>
+    <audio id="audio1" controls volume="1.0">
+        <source src="1_8407_u.wav" type="audio/wav">
+    </audio>
+    <div id="status1"></div>
+    <button onclick="playAudio1()">Play Audio 1</button>
+    <button onclick="checkVolume1()">Check Volume</button>
+
+    <h2>Test 2: 2_155_u.wav (Working)</h2>
+    <audio id="audio2" controls volume="1.0">
+        <source src="2_155_u.wav" type="audio/wav">
+    </audio>
+    <div id="status2"></div>
+    <button onclick="playAudio2()">Play Audio 2</button>
+    <button onclick="checkVolume2()">Check Volume</button>
+
+    <script>
+        function playAudio1() {
+            const audio = document.getElementById('audio1');
+            audio.play().then(() => {
+                document.getElementById('status1').innerHTML += 'Audio 1 playing successfully<br>';
+            }).catch(e => {
+                document.getElementById('status1').innerHTML += 'Error playing Audio 1: ' + e.message + '<br>';
+            });
+        }
+
+        function playAudio2() {
+            const audio = document.getElementById('audio2');
+            audio.play().then(() => {
+                document.getElementById('status2').innerHTML += 'Audio 2 playing successfully<br>';
+            }).catch(e => {
+                document.getElementById('status2').innerHTML += 'Error playing Audio 2: ' + e.message + '<br>';
+            });
+        }
+
+        function checkVolume1() {
+            const audio = document.getElementById('audio1');
+            document.getElementById('status1').innerHTML +=
+                'Duration: ' + audio.duration + 's, Volume: ' + audio.volume + ', Muted: ' + audio.muted + '<br>';
+        }
+
+        function checkVolume2() {
+            const audio = document.getElementById('audio2');
+            document.getElementById('status2').innerHTML +=
+                'Duration: ' + audio.duration + 's, Volume: ' + audio.volume + ', Muted: ' + audio.muted + '<br>';
+        }
+
+        // Add event listeners for debugging
+        document.getElementById('audio1').addEventListener('loadeddata', () => {
+            document.getElementById('status1').innerHTML += 'Audio 1 data loaded<br>';
+        });
+
+        document.getElementById('audio1').addEventListener('error', (e) => {
+            document.getElementById('status1').innerHTML += 'Audio 1 error: ' + e.type + '<br>';
+        });
+
+        document.getElementById('audio2').addEventListener('loadeddata', () => {
+            document.getElementById('status2').innerHTML += 'Audio 2 data loaded<br>';
+        });
+
+        document.getElementById('audio2').addEventListener('error', (e) => {
+            document.getElementById('status2').innerHTML += 'Audio 2 error: ' + e.type + '<br>';
+        });
+    </script>
+</body>
+
+</html>

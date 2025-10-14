@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Audio Test</title>
+</head>
+<body>
+    <h1>Audio File Test</h1>
+    
+    <h2>Test 1: Direct Audio Element</h2>
+    <audio controls>
+        <source src="1_8407_u.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <h2>Test 2: Second Audio File</h2>
+    <audio controls>
+        <source src="2_155_u.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <h2>Test 3: Third Audio File</h2>
+    <audio controls>
+        <source src="Ses01F_impro05_F021.wav" type="audio/wav">
+        Your browser does not support the audio element.
+    </audio>
+    
+    <h2>Test 4: Dynamic Loading (like your game)</h2>
+    <audio id="dynamicAudio" controls>
+        <source id="dynamicSource" src="" type="audio/wav">
+    </audio>
+    <br><br>
+    <button onclick="loadAudio1()">Load Audio 1</button>
+    <button onclick="loadAudio2()">Load Audio 2</button>
+    <button onclick="loadAudio3()">Load Audio 3</button>
+    
+    <script>
+        function loadAudio1() {
+            const audio = document.getElementById('dynamicAudio');
+            const source = document.getElementById('dynamicSource');
+            audio.pause();
+            source.src = '1_8407_u.wav';
+            audio.load();
+            console.log('Loaded: 1_8407_u.wav');
+        }
+        
+        function loadAudio2() {
+            const audio = document.getElementById('dynamicAudio');
+            const source = document.getElementById('dynamicSource');
+            audio.pause();
+            source.src = '2_155_u.wav';
+            audio.load();
+            console.log('Loaded: 2_155_u.wav');
+        }
+        
+        function loadAudio3() {
+            const audio = document.getElementById('dynamicAudio');
+            const source = document.getElementById('dynamicSource');
+            audio.pause();
+            source.src = 'Ses01F_impro05_F021.wav';
+            audio.load();
+            console.log('Loaded: Ses01F_impro05_F021.wav');
+        }
+    </script>
+</body>
+</html>
+

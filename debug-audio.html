@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Debug Audio Issue</title>
+</head>
+
+<body>
+    <h1>Debug Audio Loading</h1>
+
+    <h2>Test 1: 1_8407_u.wav (Problematic)</h2>
+    <audio id="audio1" controls>
+        <source src="1_8407_u.wav" type="audio/wav">
+    </audio>
+    <div id="status1"></div>
+
+    <h2>Test 2: 2_155_u.wav (Working)</h2>
+    <audio id="audio2" controls>
+        <source src="2_155_u.wav" type="audio/wav">
+    </audio>
+    <div id="status2"></div>
+
+    <h2>Test 3: Ses01F_impro05_F021.wav (Working)</h2>
+    <audio id="audio3" controls>
+        <source src="Ses01F_impro05_F021.wav" type="audio/wav">
+    </audio>
+    <div id="status3"></div>
+
+    <script>
+        function setupAudioListeners(audioId, statusId) {
+            const audio = document.getElementById(audioId);
+            const status = document.getElementById(statusId);
+
+            audio.addEventListener('loadstart', () => {
+                status.innerHTML += 'Load started<br>';
+            });
+
+            audio.addEventListener('loadeddata', () => {
+                status.innerHTML += 'Data loaded<br>';
+            });
+
+            audio.addEventListener('canplay', () => {
+                status.innerHTML += 'Can play<br>';
+            });
+
+            audio.addEventListener('error', (e) => {
+                status.innerHTML += `Error: ${e.type}<br>`;
+                status.innerHTML += `Error code: ${audio.error ? audio.error.code : 'unknown'}<br>`;
+                status.innerHTML += `Error message: ${audio.error ? audio.error.message : 'unknown'}<br>`;
+            });
+
+            audio.addEventListener('stalled', () => {
+                status.innerHTML += 'Stalled<br>';
+            });
+
+            audio.addEventListener('suspend', () => {
+                status.innerHTML += 'Suspended<br>';
+            });
+        }
+
+        setupAudioListeners('audio1', 'status1');
+        setupAudioListeners('audio2', 'status2');
+        setupAudioListeners('audio3', 'status3');
+    </script>
+</body>
+
+</html>
