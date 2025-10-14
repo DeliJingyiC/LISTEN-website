@@ -21,6 +21,9 @@
                 <span></span>
             </button>
             <div class="nav-links" id="navLinks">
+                <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+                    <i class="fas fa-times"></i>
+                </button>
                 <a href="#overview">Overview</a>
                 <a href="#leaderboard">Leaderboard</a>
                 <a href="#visualizations">Results</a>
@@ -208,6 +211,8 @@
             border-radius: 1rem;
             padding: 2.5rem;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            position: relative;
         }
 
         .game-progress {
@@ -670,23 +675,116 @@
         @media (max-width: 768px) {
             .game-embed {
                 padding: 1.5rem;
+                margin: 2rem 1rem;
+                max-width: calc(100vw - 2rem);
+                overflow: hidden;
+                position: relative;
+            }
+
+            .question-content {
+                padding: 1.5rem;
+                min-height: 120px;
+                overflow-wrap: break-word;
+                word-wrap: break-word;
             }
 
             .question-text {
-                font-size: 1.2rem;
+                font-size: 1.1rem;
+                line-height: 1.5;
+                word-wrap: break-word;
             }
 
             .emotion-options {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 0.5rem;
+                margin: 0;
+                padding: 0;
+            }
+
+            .emotion-btn {
+                padding: 0.75rem 0.5rem;
+                font-size: 0.85rem;
+                word-wrap: break-word;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .audio-control {
+                max-width: 100%;
             }
 
             .perf-bar {
                 grid-template-columns: 1fr;
                 gap: 0.5rem;
+                text-align: center;
             }
 
             .perf-percent {
-                text-align: left;
+                text-align: center;
+            }
+
+            /* Ensure proper spacing */
+            .section-featured {
+                padding: 4rem 0;
+                margin-top: 3rem;
+            }
+
+            .section {
+                padding: 4rem 0;
+                margin-top: 3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .game-embed {
+                padding: 1rem;
+                margin: 1.5rem 0.5rem;
+                max-width: calc(100vw - 1rem);
+                overflow: hidden;
+                position: relative;
+            }
+
+            .question-content {
+                padding: 1rem;
+                min-height: 100px;
+                overflow-wrap: break-word;
+            }
+
+            .question-text {
+                font-size: 1rem;
+                word-wrap: break-word;
+            }
+
+            .emotion-options {
+                grid-template-columns: 1fr;
+                gap: 0.5rem;
+                margin: 0;
+                padding: 0;
+            }
+
+            .emotion-btn {
+                padding: 0.75rem;
+                font-size: 0.9rem;
+                word-wrap: break-word;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .audio-control {
+                max-width: 100%;
+            }
+
+            /* Ensure proper spacing for small screens */
+            .section-featured {
+                padding: 3rem 0;
+                margin-top: 2rem;
+            }
+
+            .section {
+                padding: 3rem 0;
+                margin-top: 2rem;
             }
         }
     </style>

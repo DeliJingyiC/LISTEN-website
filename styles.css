@@ -138,6 +138,28 @@ body {
     transform: rotate(45deg) translate(-5px, -6px);
 }
 
+/* Mobile menu close button */
+.mobile-menu-close {
+    display: none;
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--primary-color);
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.mobile-menu-close:hover {
+    background: var(--bg-light);
+    transform: scale(1.1);
+}
+
 .game-link {
     background: var(--navy);
     color: white !important;
@@ -1084,10 +1106,18 @@ footer a:hover {
         transition: left 0.3s ease !important;
         z-index: 1000 !important;
         display: flex !important;
+        opacity: 0 !important;
+        visibility: hidden !important;
     }
 
     .nav-links.active {
         left: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+    }
+
+    .mobile-menu-close {
+        display: block !important;
     }
 
     .nav-links a {
@@ -1184,13 +1214,6 @@ footer a:hover {
         flex-direction: column;
     }
 
-    /* Game embed responsive fixes */
-    .game-embed {
-        padding: 1.5rem;
-        margin: 2rem 1rem;
-        max-width: calc(100vw - 2rem);
-    }
-
     /* Fix section spacing to prevent overlap */
     .section {
         padding: 4rem 0;
@@ -1200,12 +1223,6 @@ footer a:hover {
     .section-featured {
         padding: 4rem 0;
         margin-top: 3rem;
-    }
-
-    /* Ensure game embed has proper spacing */
-    .game-embed {
-        margin-top: 3rem !important;
-        margin-bottom: 3rem !important;
     }
 
     .question-content {
@@ -1354,11 +1371,6 @@ footer a:hover {
         padding: 1rem;
     }
 
-    .game-embed {
-        padding: 1rem;
-        margin: 0 0.5rem;
-        max-width: calc(100vw - 1rem);
-    }
 
     .question-content {
         padding: 1rem;

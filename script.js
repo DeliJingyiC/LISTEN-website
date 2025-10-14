@@ -3,26 +3,58 @@ function toggleMobileMenu() {
     const navLinks = document.getElementById('navLinks');
     const toggle = document.querySelector('.mobile-menu-toggle');
 
-    console.log('Toggle clicked, navLinks:', navLinks);
-    console.log('Toggle element:', toggle);
-
-    if (navLinks && toggle) {
-        navLinks.classList.toggle('active');
-        toggle.classList.toggle('active');
-        console.log('Classes toggled');
+    if (!navLinks || !toggle) {
+        console.error('Navigation elements not found');
+        return;
     }
+
+    const isActive = navLinks.classList.contains('active');
+
+    if (isActive) {
+        // Close menu
+        navLinks.classList.remove('active');
+        toggle.classList.remove('active');
+        document.body.style.overflow = ''; // Re-enable scrolling
+    } else {
+        // Open menu
+        navLinks.classList.add('active');
+        toggle.classList.add('active');
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    console.log('Menu toggled:', !isActive ? 'opened' : 'closed');
 }
 
 // Close mobile menu when clicking on a link
 document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
+    const navMenu = document.getElementById('navLinks');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+
     navLinks.forEach(link => {
         link.addEventListener('click', () => {
-            const navMenu = document.getElementById('navLinks');
-            const toggle = document.querySelector('.mobile-menu-toggle');
+            if (navMenu && toggle) {
+                navMenu.classList.remove('active');
+                toggle.classList.remove('active');
+                document.body.style.overflow = ''; // Re-enable scrolling
+                console.log('Menu closed by link click');
+            }
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        const navMenu = document.getElementById('navLinks');
+        const toggle = document.querySelector('.mobile-menu-toggle');
+
+        if (navMenu && navMenu.classList.contains('active') &&
+            !navMenu.contains(e.target) &&
+            !toggle.contains(e.target)) {
             navMenu.classList.remove('active');
             toggle.classList.remove('active');
-        });
+            document.body.style.overflow = '';
+            console.log('Menu closed by outside click');
+        }
     });
 });
 
