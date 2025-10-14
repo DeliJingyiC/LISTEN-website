@@ -76,63 +76,62 @@
     <section id="interactive-challenge" class="section-featured">
         <div class="container">
             <div class="challenge-header">
-                <h2>Do You Listen?</h2>
-                <p class="challenge-subtitle">Test your emotion recognition skills in this challenge</p>
+                <h2>🎭 Say vs. Sound</h2>
+                <p class="challenge-subtitle">Can you predict when the voice will contradict the words?</p>
             </div>
 
             <div class="game-embed">
                 <div class="game-progress">
                     <div class="progress-indicator">
                         <span class="current-round">Round <span id="currentRound">1</span></span>
-                        <span class="total-rounds">of <span id="totalRounds">6</span></span>
+                        <span class="total-rounds">of <span id="totalRounds">3</span></span>
                     </div>
                     <div class="progress-bar-game">
                         <div class="progress-fill-game" id="progressFillGame"></div>
                     </div>
                 </div>
 
-                <div class="flip-card-container" id="flipCardContainer">
-                    <div class="flip-card" id="flipCard">
-                        <div class="flip-card-front">
-                            <div class="card-type-badge">📝 Text Question</div>
-                            <div class="question-content">
-                                <p class="question-text" id="questionText">"Yeah, it's a great time to be alive, isn't
-                                    it?"</p>
-                            </div>
-                            <p class="question-prompt">What emotion is being expressed?</p>
-                            <div class="emotion-options" id="emotionOptions"></div>
-                        </div>
+                <div id="gameSection">
+                    <div class="text-display">
+                        <h2 id="questionText">""</h2>
+                    </div>
 
-                        <div class="flip-card-back">
-                            <div class="card-type-badge">🎵 Audio Question</div>
-                            <div class="question-content">
-                                <div class="audio-player-embed">
-                                    <i class="fas fa-volume-up audio-icon-large"></i>
-                                    <audio controls id="audioElement" class="audio-control">
-                                        <source id="audioSource" src="" type="audio/wav">
-                                    </audio>
-                                    <p class="audio-instruction">Listen carefully to the tone</p>
-                                </div>
-                            </div>
-                            <p class="question-prompt">What emotion do you hear?</p>
-                            <div class="emotion-options" id="emotionOptionsBack"></div>
+                    <div class="prediction-section" id="predictionSection">
+                        <h3>Will the audio match this emotion?</h3>
+                        <div class="prediction-buttons">
+                            <button class="prediction-btn" onclick="makePrediction('same')">
+                                <i class="fas fa-check-circle"></i> Same Emotion
+                            </button>
+                            <button class="prediction-btn" onclick="makePrediction('different')">
+                                <i class="fas fa-exchange-alt"></i> Different Emotion
+                            </button>
                         </div>
                     </div>
-                </div>
 
-                <div class="answer-feedback" id="answerFeedback" style="display: none;">
-                    <div class="feedback-content">
-                        <div class="correct-answer-display">
-                            <span class="feedback-label">Correct Answer:</span>
-                            <span class="feedback-value" id="correctAnswer">Happiness</span>
+                    <div class="reveal-section" id="revealSection">
+                        <div class="audio-player">
+                            <button class="play-audio-btn" onclick="playAudio()">
+                                <i class="fas fa-play"></i> Play Audio
+                            </button>
+                            <audio id="audioElement">
+                                <source id="audioSource" src="" type="audio/wav">
+                            </audio>
                         </div>
-                        <div class="ai-comparison">
-                            <h4>AI Models Performance:</h4>
-                            <div class="ai-results-grid" id="aiResultsGrid"></div>
+
+                        <div class="result-card" id="resultCard">
+                            <h3 id="resultTitle"></h3>
+                            <div class="emotion-reveal">
+                                <p>Text suggests: <span class="emotion-tag" id="textEmotion"></span></p>
+                                <p>Voice reveals: <span class="emotion-tag" id="audioEmotion"></span></p>
+                            </div>
+                            <div class="insight-box">
+                                <p id="insightText"></p>
+                            </div>
                         </div>
-                        <div class="insight-message" id="insightMessage"></div>
-                        <button class="btn-next-round" id="btnNextRound" onclick="nextQuestion()">Next Question <i
-                                class="fas fa-arrow-right"></i></button>
+
+                        <button class="next-btn" onclick="nextRound()">
+                            Next Round <i class="fas fa-arrow-right"></i>
+                        </button>
                     </div>
                 </div>
 
@@ -141,36 +140,28 @@
                         <div class="trophy-display">
                             <i class="fas fa-trophy"></i>
                         </div>
-                        <h3>Challenge Complete!</h3>
+                        <h3>🎉 Challenge Complete!</h3>
                         <div class="score-display">
                             <div class="user-score">
                                 <span class="score-label">Your Score</span>
-                                <span class="score-number" id="userScore">0/6</span>
+                                <span class="score-number" id="finalScore">0/3</span>
                             </div>
                         </div>
-                        <div class="ai-scores-comparison" id="aiScoresComparison"></div>
-                        <div class="performance-breakdown">
-                            <h4>Your Performance</h4>
-                            <div class="perf-bars">
-                                <div class="perf-bar">
-                                    <span class="perf-label">Text Questions</span>
-                                    <div class="perf-bar-container">
-                                        <div class="perf-bar-fill" id="textPerf"></div>
-                                    </div>
-                                    <span class="perf-percent" id="textPercent">0%</span>
-                                </div>
-                                <div class="perf-bar">
-                                    <span class="perf-label">Audio Questions</span>
-                                    <div class="perf-bar-container">
-                                        <div class="perf-bar-fill acoustic" id="audioPerf"></div>
-                                    </div>
-                                    <span class="perf-percent" id="audioPercent">0%</span>
-                                </div>
+                        <p class="final-message" id="finalMessage"></p>
+
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <h4>Correctly Predicted</h4>
+                                <p id="correctPredictions">0</p>
+                            </div>
+                            <div class="stat-card">
+                                <h4>Surprised by Voice</h4>
+                                <p id="surpriseCount">0</p>
                             </div>
                         </div>
-                        <div class="results-message" id="resultsMessage"></div>
+
                         <div class="results-actions">
-                            <button class="btn-restart" onclick="restartChallenge()"><i class="fas fa-redo"></i> Try
+                            <button class="btn-restart" onclick="restartGame()"><i class="fas fa-redo"></i> Play
                                 Again</button>
                             <a href="#leaderboard" class="btn-view-full">View Full Benchmark <i
                                     class="fas fa-arrow-right"></i></a>
@@ -213,6 +204,246 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             overflow: hidden;
             position: relative;
+        }
+
+        /* New Say vs. Sound Game Styles */
+        .text-display {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .text-display h2 {
+            font-size: 1.8rem;
+            color: #333;
+            line-height: 1.5;
+            font-style: italic;
+        }
+
+        .prediction-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .prediction-section h3 {
+            color: #1A1A1A;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+
+        .prediction-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .prediction-btn {
+            padding: 15px 30px;
+            font-size: 1.1rem;
+            border: 3px solid #B08BBB;
+            background: white;
+            color: #B08BBB;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prediction-btn:hover {
+            background: #B08BBB;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(176, 139, 187, 0.4);
+        }
+
+        .prediction-btn.selected {
+            background: #B08BBB;
+            color: white;
+            transform: scale(1.05);
+        }
+
+        .reveal-section {
+            display: none;
+            text-align: center;
+        }
+
+        .reveal-section.show {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .audio-player {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .play-audio-btn {
+            background: linear-gradient(135deg, #B08BBB, #C7B8EA);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 20px rgba(176, 139, 187, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 auto;
+        }
+
+        .play-audio-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(176, 139, 187, 0.6);
+        }
+
+        .play-audio-btn:active {
+            transform: translateY(0);
+        }
+
+        .result-card {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+        }
+
+        .result-card.correct {
+            background: linear-gradient(135deg, #a8e6cf, #56ab2f);
+        }
+
+        .result-card.incorrect {
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+        }
+
+        .result-card h3 {
+            font-size: 1.8rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .result-card p {
+            font-size: 1.1rem;
+            color: white;
+            line-height: 1.6;
+        }
+
+        .emotion-reveal {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+
+        .emotion-reveal p {
+            color: #333;
+            font-size: 1.1rem;
+            margin: 5px 0;
+        }
+
+        .emotion-tag {
+            display: inline-block;
+            padding: 5px 15px;
+            background: #B08BBB;
+            color: white;
+            border-radius: 20px;
+            font-weight: bold;
+            margin: 0 5px;
+        }
+
+        .next-btn {
+            background: linear-gradient(135deg, #B08BBB, #C7B8EA);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            width: 100%;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .next-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(176, 139, 187, 0.4);
+        }
+
+        .insight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 15px;
+        }
+
+        .insight-box p {
+            color: #856404;
+            font-style: italic;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: #f8f9fa;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .stat-card h4 {
+            color: #B08BBB;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .stat-card p {
+            font-size: 2rem;
+            color: #333;
+            font-weight: bold;
+        }
+
+        .final-message {
+            font-size: 1.2rem;
+            color: #6B6B6B;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         .game-progress {
@@ -851,166 +1082,149 @@
 
     <script>
         const gameQuestions = [
-            { type: "text", text: "You are cruising for a bruising.  You are in so much trouble.", correct: "anger", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "anger", correct: true }, "Qwen3-Omni": { guess: "anger", correct: true }, "Gemini 2.5 Flash": { guess: "anger", correct: true } }, insight: "These words burns with anger. You can feel the threat, right?" },
-            { type: "audio", audio: "Ses01F_impro05_F021.wav", correct: "anger", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "anger", correct: true }, "Qwen3-Omni": { guess: "anger", correct: true }, "Gemini 2.5 Flash": { guess: "anger", correct: true } }, insight: "Whoa, that's intense — she sounds so angry!" },
-
-            { type: "text", text: "Great! Now we can do laundry all night. All night laundry!", correct: "happiness", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "frustration", correct: false }, "Qwen3-Omni": { guess: "happiness", correct: true }, "Gemini 2.5 Flash": { guess: "excitement", correct: false } }, insight: "Lots of energy! Looks fun, right?" },
-            { type: "audio", audio: "2_155_u.wav", correct: "anger", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "anger", correct: true }, "Qwen3-Omni": { guess: "excitement", correct: false }, "Gemini 2.5 Flash": { guess: "ridicule", correct: false } }, insight: "Whoa, not so fun anymore, that tone is *angry*! You can feel the bite in his voice. Now the acoustic cues weigh heavier than the lexical cues." },
-
-
-            { type: "text", text: "Yeah, sure, what a wonderful idea!", correct: "excitement", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "excitement", correct: true }, "Qwen3-Omni": { guess: "excitement", correct: true }, "Gemini 2.5 Flash": { guess: "excitement", correct: true } }, insight: "what a wonderful idea is exciting!" },
-            { type: "audio", audio: "1_8407_u.wav", correct: "frustration", emotions: ["disgust", "neutral", "ridicule", "frustration", "sadness", "anger", "excitement", "fear", "surprise", "happiness"], aiPredictions: { "Gemini 2.5 Pro": { guess: "disgust", correct: false }, "Qwen3-Omni": { guess: "frustration", correct: true }, "Gemini 2.5 Flash": { guess: "frustration", correct: true } }, insight: "Okay, not sounding like a wonderful idea anymore. The voice sounds frustrated, again, the acoustic cues weigh heavier than the lexical cues." }
+            {
+                text: "You are cruising for a bruising. You are in so much trouble.",
+                audio: "Ses01F_impro05_F021.wav",
+                textEmotion: "anger",
+                audioEmotion: "anger",
+                insight: "These words burns with anger. You can feel the threat, right? Whoa, that's intense — she sounds so angry!"
+            },
+            {
+                text: "Yeah, sure, what a wonderful idea!",
+                audio: "1_8407_u.wav",
+                textEmotion: "excitement",
+                audioEmotion: "frustration",
+                insight: "What a wonderful idea is exciting! But wait... not sounding like a wonderful idea anymore. The voice sounds frustrated — the acoustic cues weigh heavier than the lexical cues."
+            },
+            {
+                text: "Great! Now we can do laundry all night. All night laundry!",
+                audio: "2_155_u.wav",
+                textEmotion: "happiness",
+                audioEmotion: "anger",
+                insight: "Lots of energy! Looks fun, right? Whoa, not so fun anymore, that tone is *angry*! You can feel the bite in his voice. The acoustic cues weigh heavier than the lexical cues."
+            }
         ];
 
-        let currentQuestion = 0;
-        let userAnswers = [];
-        let aiScores = { "Gemini 2.5 Pro": 0, "Qwen3-Omni": 0, "Gemini 2.5 Flash": 0 };
+        let currentRound = 0;
+        let userPrediction = null;
+        let correctPredictions = 0;
+        let surpriseCount = 0;
 
         function initGame() {
             const totalEl = document.getElementById('totalRounds');
             if (!totalEl) return;
             totalEl.textContent = gameQuestions.length;
-            loadQuestion();
+            loadRound();
         }
 
-        function loadQuestion() {
-            const question = gameQuestions[currentQuestion];
-            document.getElementById('currentRound').textContent = currentQuestion + 1;
-            const progress = ((currentQuestion + 1) / gameQuestions.length) * 100;
+        function loadRound() {
+            const question = gameQuestions[currentRound];
+
+            document.getElementById('currentRound').textContent = currentRound + 1;
+            document.getElementById('questionText').textContent = `"${question.text}"`;
+
+            const progress = ((currentRound) / gameQuestions.length) * 100;
             document.getElementById('progressFillGame').style.width = progress + '%';
-            const flipCard = document.getElementById('flipCard');
-            const isAudio = question.type === 'audio';
-            if (isAudio) {
-                flipCard.classList.add('flipped');
-                const audioElement = document.getElementById('audioElement');
-                const audioSource = document.getElementById('audioSource');
 
-                // Reset audio element
-                audioElement.pause();
-                audioElement.currentTime = 0;
+            document.getElementById('predictionSection').style.display = 'block';
+            document.getElementById('revealSection').classList.remove('show');
 
-                // Update source and reload
-                audioSource.src = question.audio;
-                audioElement.load();
-
-                // Add error handling
-                audioElement.onerror = function () {
-                    console.error('Error loading audio:', question.audio);
-                    console.error('Audio error code:', audioElement.error ? audioElement.error.code : 'unknown');
-                };
-
-                renderEmotionButtons('emotionOptionsBack', question.emotions, isAudio);
-            } else {
-                flipCard.classList.remove('flipped');
-                document.getElementById('questionText').textContent = `"${question.text}"`;
-                renderEmotionButtons('emotionOptions', question.emotions, isAudio);
-            }
-            document.getElementById('answerFeedback').style.display = 'none';
-            document.getElementById('finalResults').style.display = 'none';
-            document.getElementById('flipCardContainer').style.display = '';
-        }
-
-        function renderEmotionButtons(containerId, emotions, isAudio) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = '';
-            emotions.forEach(emotion => {
-                const btn = document.createElement('button');
-                btn.className = 'emotion-btn';
-                btn.textContent = emotion.charAt(0).toUpperCase() + emotion.slice(1);
-                btn.onclick = () => selectAnswer(emotion, btn, isAudio);
-                container.appendChild(btn);
+            document.querySelectorAll('.prediction-btn').forEach(btn => {
+                btn.classList.remove('selected');
             });
+
+            const audioElement = document.getElementById('audioElement');
+            const audioSource = document.getElementById('audioSource');
+            audioElement.pause();
+            audioElement.currentTime = 0;
+            audioSource.src = question.audio;
+            audioElement.load();
+
+            userPrediction = null;
         }
 
-        function selectAnswer(emotion, btn, isAudio) {
-            const containerId = isAudio ? 'emotionOptionsBack' : 'emotionOptions';
-            document.querySelectorAll(`#${containerId} .emotion-btn`).forEach(b => b.classList.remove('selected'));
-            btn.classList.add('selected');
-            setTimeout(() => { checkAnswer(emotion); }, 300);
-        }
+        function makePrediction(prediction) {
+            userPrediction = prediction;
 
-        function checkAnswer(userAnswer) {
-            const question = gameQuestions[currentQuestion];
-            const isCorrect = userAnswer === question.correct;
-            userAnswers.push({ type: question.type, correct: isCorrect });
-            Object.keys(question.aiPredictions).forEach(model => { if (question.aiPredictions[model].correct) { aiScores[model]++; } });
-            showFeedback(question, isCorrect);
-        }
-
-        function showFeedback(question, userCorrect) {
-            document.getElementById('correctAnswer').textContent = question.correct.charAt(0).toUpperCase() + question.correct.slice(1);
-            const aiGrid = document.getElementById('aiResultsGrid');
-            aiGrid.innerHTML = '';
-            Object.keys(question.aiPredictions).forEach(model => {
-                const pred = question.aiPredictions[model];
-                const div = document.createElement('div');
-                div.className = `ai-result-item ${pred.correct ? 'correct' : 'incorrect'}`;
-                div.innerHTML = `<div class="ai-name-small">${model}</div><div class="ai-guess-small">${pred.guess.charAt(0).toUpperCase() + pred.guess.slice(1)}</div>`;
-                aiGrid.appendChild(div);
+            document.querySelectorAll('.prediction-btn').forEach(btn => {
+                btn.classList.remove('selected');
             });
-            document.getElementById('insightMessage').textContent = question.insight;
-            document.getElementById('answerFeedback').style.display = 'block';
-            if (currentQuestion === gameQuestions.length - 1) {
-                const btn = document.getElementById('btnNextRound');
-                btn.textContent = 'See Results';
-                btn.innerHTML = 'See Results <i class="fas fa-trophy"></i>';
-            }
-        }
+            event.target.closest('.prediction-btn').classList.add('selected');
 
-        function nextQuestion() {
-            currentQuestion++;
-            if (currentQuestion < gameQuestions.length) {
-                loadQuestion();
-            } else {
-                showResults();
-            }
-        }
-
-        function showResults() {
-            document.getElementById('flipCardContainer').style.display = 'none';
-            document.getElementById('answerFeedback').style.display = 'none';
-            document.getElementById('finalResults').style.display = 'block';
-            const correctCount = userAnswers.filter(a => a.correct).length;
-            document.getElementById('userScore').textContent = `${correctCount}/${gameQuestions.length}`;
-            const aiGrid = document.getElementById('aiScoresComparison');
-            aiGrid.innerHTML = '';
-            const maxScore = Math.max(...Object.values(aiScores), correctCount);
-            Object.entries(aiScores).forEach(([model, score]) => {
-                const div = document.createElement('div');
-                div.className = `ai-score-card ${score === maxScore ? 'winner' : ''}`;
-                div.innerHTML = `<div class="ai-model-name">${model}</div><div class="ai-score-value">${score}/${gameQuestions.length}</div>`;
-                aiGrid.appendChild(div);
-            });
-            const textCorrect = userAnswers.filter(a => a.type === 'text' && a.correct).length;
-            const audioCorrect = userAnswers.filter(a => a.type === 'audio' && a.correct).length;
-            const textTotal = userAnswers.filter(a => a.type === 'text').length;
-            const audioTotal = userAnswers.filter(a => a.type === 'audio').length;
-            const textPercent = textTotal ? (textCorrect / textTotal) * 100 : 0;
-            const audioPercent = audioTotal ? (audioCorrect / audioTotal) * 100 : 0;
             setTimeout(() => {
-                document.getElementById('textPerf').style.width = textPercent + '%';
-                document.getElementById('audioPerf').style.width = audioPercent + '%';
-                document.getElementById('textPercent').textContent = Math.round(textPercent) + '%';
-                document.getElementById('audioPercent').textContent = Math.round(audioPercent) + '%';
+                document.getElementById('predictionSection').style.display = 'none';
+                document.getElementById('revealSection').classList.add('show');
             }, 300);
-            let message = '';
-            if (correctCount === gameQuestions.length) {
-                message = '🏆 <strong>Perfect Score!</strong> You beat all the AI models!';
-            } else if (correctCount >= maxScore) {
-                message = '🎉 <strong>Impressive!</strong> You matched or beat the best AI models.';
-            } else {
-                message = `You scored ${correctCount}/${gameQuestions.length}. ${audioPercent > textPercent ? "You're stronger with audio!" : "You're stronger with text!"}`;
-            }
-            document.getElementById('resultsMessage').innerHTML = message;
         }
 
-        function restartChallenge() {
-            currentQuestion = 0;
-            userAnswers = [];
-            aiScores = { "Gemini 2.5 Pro": 0, "Qwen3-Omni": 0, "Baichuan-Omni": 0 };
-            const btn = document.getElementById('btnNextRound');
-            if (btn) btn.innerHTML = 'Next Question <i class="fas fa-arrow-right"></i>';
-            loadQuestion();
+        function playAudio() {
+            const audioElement = document.getElementById('audioElement');
+            audioElement.play();
+
+            setTimeout(() => {
+                showResult();
+            }, 1000);
+        }
+
+        function showResult() {
+            const question = gameQuestions[currentRound];
+            const isSame = question.textEmotion === question.audioEmotion;
+            const actualAnswer = isSame ? 'same' : 'different';
+            const isCorrect = userPrediction === actualAnswer;
+
+            if (isCorrect) correctPredictions++;
+            if (!isSame) surpriseCount++;
+
+            const resultCard = document.getElementById('resultCard');
+            resultCard.className = 'result-card ' + (isCorrect ? 'correct' : 'incorrect');
+
+            document.getElementById('resultTitle').textContent = isCorrect ?
+                '✨ You Got It!' : '🎭 The Voice Fooled You!';
+
+            document.getElementById('textEmotion').textContent = question.textEmotion.charAt(0).toUpperCase() + question.textEmotion.slice(1);
+            document.getElementById('audioEmotion').textContent = question.audioEmotion.charAt(0).toUpperCase() + question.audioEmotion.slice(1);
+            document.getElementById('insightText').textContent = question.insight;
+        }
+
+        function nextRound() {
+            currentRound++;
+
+            if (currentRound < gameQuestions.length) {
+                loadRound();
+            } else {
+                showFinalResults();
+            }
+        }
+
+        function showFinalResults() {
+            document.getElementById('gameSection').style.display = 'none';
+            document.getElementById('finalResults').style.display = 'block';
+
+            document.getElementById('finalScore').textContent = `${correctPredictions}/${gameQuestions.length}`;
+            document.getElementById('correctPredictions').textContent = correctPredictions;
+            document.getElementById('surpriseCount').textContent = surpriseCount;
+
+            let message = '';
+            if (correctPredictions === gameQuestions.length) {
+                message = 'Perfect! You have a great sense of how voice can transform meaning!';
+            } else if (correctPredictions >= 2) {
+                message = 'Nice work! You\'re getting the hang of acoustic vs. lexical cues.';
+            } else {
+                message = 'Voice is tricky! Acoustic cues often override what the words say.';
+            }
+
+            document.getElementById('finalMessage').textContent = message;
+        }
+
+        function restartGame() {
+            currentRound = 0;
+            correctPredictions = 0;
+            surpriseCount = 0;
+
+            document.getElementById('gameSection').style.display = 'block';
+            document.getElementById('finalResults').style.display = 'none';
+
+            initGame();
         }
 
         document.addEventListener('DOMContentLoaded', initGame);
@@ -1619,5 +1833,7 @@
 
     <script src="script.js"></script>
 </body>
+
+</html>
 
 </html>
