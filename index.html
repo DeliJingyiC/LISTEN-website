@@ -719,8 +719,23 @@
             const isAudio = question.type === 'audio';
             if (isAudio) {
                 flipCard.classList.add('flipped');
-                document.getElementById('audioSource').src = question.audio;
-                document.getElementById('audioElement').load();
+                const audioElement = document.getElementById('audioElement');
+                const audioSource = document.getElementById('audioSource');
+
+                // Reset audio element
+                audioElement.pause();
+                audioElement.currentTime = 0;
+
+                // Update source and reload
+                audioSource.src = question.audio;
+                audioElement.load();
+
+                // Add error handling
+                audioElement.onerror = function () {
+                    console.error('Error loading audio:', question.audio);
+                    console.error('Audio error code:', audioElement.error ? audioElement.error.code : 'unknown');
+                };
+
                 renderEmotionButtons('emotionOptionsBack', question.emotions, isAudio);
             } else {
                 flipCard.classList.remove('flipped');
