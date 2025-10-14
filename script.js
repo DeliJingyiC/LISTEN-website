@@ -1,3 +1,31 @@
+// Mobile menu toggle function
+function toggleMobileMenu() {
+    const navLinks = document.getElementById('navLinks');
+    const toggle = document.querySelector('.mobile-menu-toggle');
+
+    console.log('Toggle clicked, navLinks:', navLinks);
+    console.log('Toggle element:', toggle);
+
+    if (navLinks && toggle) {
+        navLinks.classList.toggle('active');
+        toggle.classList.toggle('active');
+        console.log('Classes toggled');
+    }
+}
+
+// Close mobile menu when clicking on a link
+document.addEventListener('DOMContentLoaded', () => {
+    const navLinks = document.querySelectorAll('.nav-links a');
+    navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            const navMenu = document.getElementById('navLinks');
+            const toggle = document.querySelector('.mobile-menu-toggle');
+            navMenu.classList.remove('active');
+            toggle.classList.remove('active');
+        });
+    });
+});
+
 // Leaderboard data from paper results
 // Table shows: Neutral-Text (Exp1), Emotion-Matched (Exp2), Emotion-Mismatched (Exp3), Paralinguistic (Exp4)
 // Values in parentheses are prediction marginal distribution baselines
