@@ -170,7 +170,7 @@ function getTypeBadge(type) {
 
 // Format score
 function formatScore(score) {
-    return score !== undefined && score !== null ? score.toFixed(2) : 'N/A';
+    return score !== undefined && score !== null ? score.toFixed(1) : 'N/A';
 }
 
 // Get score cell HTML
