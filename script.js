@@ -1,7 +1,11 @@
 // Mobile menu toggle function
 function toggleMobileMenu() {
+    console.log('toggleMobileMenu called');
     const navLinks = document.getElementById('navLinks');
     const toggle = document.querySelector('.mobile-menu-toggle');
+
+    console.log('navLinks element:', navLinks);
+    console.log('toggle element:', toggle);
 
     if (!navLinks || !toggle) {
         console.error('Navigation elements not found');
@@ -9,20 +13,21 @@ function toggleMobileMenu() {
     }
 
     const isActive = navLinks.classList.contains('active');
+    console.log('Current active state:', isActive);
 
     if (isActive) {
         // Close menu
         navLinks.classList.remove('active');
         toggle.classList.remove('active');
         document.body.style.overflow = ''; // Re-enable scrolling
+        console.log('Menu closed');
     } else {
         // Open menu
         navLinks.classList.add('active');
         toggle.classList.add('active');
         document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        console.log('Menu opened');
     }
-
-    console.log('Menu toggled:', !isActive ? 'opened' : 'closed');
 }
 
 // Close mobile menu when clicking on a link
