@@ -1024,15 +1024,37 @@ footer a:hover {
         padding: 1rem 0;
     }
 
+    .nav-brand {
+        text-align: center;
+        margin-bottom: 1rem;
+        width: 100%;
+        display: block;
+    }
+
     .nav-links {
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
+        display: flex;
+        flex-direction: column;
+        gap: 0.75rem;
+        align-items: center;
+        width: 100%;
     }
 
     .nav-links a {
         font-size: 0.9rem;
-        padding: 0.5rem;
+        padding: 0.5rem 1rem;
+        text-align: center;
+        width: 100%;
+        max-width: 200px;
+    }
+
+    .game-link {
+        margin-top: 1rem;
+        width: 100%;
+        max-width: 200px;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     /* Hero section fixes */
@@ -1219,6 +1241,23 @@ footer a:hover {
         padding: 0 0.75rem;
     }
 
+    /* Navigation fixes for small screens */
+    .nav-links {
+        gap: 0.5rem;
+    }
+
+    .nav-links a {
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+        max-width: 180px;
+    }
+
+    .game-link {
+        max-width: 180px;
+        font-size: 0.85rem;
+        padding: 0.4rem 0.8rem;
+    }
+
     .hero h1 {
         font-size: 1.75rem;
     }
@@ -1313,6 +1352,16 @@ footer a:hover {
 
     /* Prevent horizontal scroll */
     body {
+        overflow-x: hidden;
+    }
+
+    /* Ensure navigation doesn't wrap horizontally */
+    .navbar {
+        overflow-x: hidden;
+    }
+
+    .nav-links {
+        flex-wrap: nowrap;
         overflow-x: hidden;
     }
 
