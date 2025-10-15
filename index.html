@@ -954,16 +954,18 @@
 
     <script>
         const gameQuestions = [
+
+
             {
-                text: "You are cruising for a bruising. You are in so much trouble.",
-                audio: "Ses01F_impro05_F021.wav",
-                textEmotion: "anger",
+                text: "You're right, the party's fantastic. Please, tell me more. I haven't heard enough about it all week because hearing about that never gets old!",
+                audio: "1_7575_u.wav",
+                textEmotion: "excitement",
                 audioEmotion: "anger",
                 emotions: [
                     { emoji: "😊", name: "Happy", value: "happy" },
                     { emoji: "😠", name: "Angry", value: "anger" },
-                    { emoji: "😐", name: "Neutral", value: "neutral" },
-                    { emoji: "😰", name: "Fear", value: "fear" }
+                    { emoji: "😤", name: "Frustrated", value: "frustration" },
+                    { emoji: "🤩", name: "Excited", value: "excitement" }
                 ],
                 insight: "Are text and voice have the same emotion?"
             },
@@ -981,18 +983,19 @@
                 insight: "Are text and voice have the same emotion?"
             },
             {
-                text: "You're right, the party's fantastic. Please, tell me more. I haven't heard enough about it all week because hearing about that never gets old!",
-                audio: "1_7575_u.wav",
-                textEmotion: "excitement",
+                text: "You are cruising for a bruising. You are in so much trouble.",
+                audio: "Ses01F_impro05_F021.wav",
+                textEmotion: "anger",
                 audioEmotion: "anger",
                 emotions: [
                     { emoji: "😊", name: "Happy", value: "happy" },
                     { emoji: "😠", name: "Angry", value: "anger" },
-                    { emoji: "😤", name: "Frustrated", value: "frustration" },
-                    { emoji: "🤩", name: "Excited", value: "excitement" }
+                    { emoji: "😐", name: "Neutral", value: "neutral" },
+                    { emoji: "😰", name: "Fear", value: "fear" }
                 ],
                 insight: "Are text and voice have the same emotion?"
-            }
+            },
+
         ];
 
         let currentRound = 0;
