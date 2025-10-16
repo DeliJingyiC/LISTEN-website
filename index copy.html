@@ -27,6 +27,9 @@
                 <a href="#overview">Overview</a>
                 <a href="#leaderboard">Leaderboard</a>
                 <a href="#visualizations">Results</a>
+                <a href="#interactive-challenge" class="game-link">
+                    <i class="fas fa-brain"></i> Read vs. Listen?
+                </a>
                 <a href="#experiments">Experiments</a>
                 <a href="#examples">Examples</a>
                 <a href="#citation">Citation</a>
@@ -69,6 +72,7 @@
         </div>
     </header>
 
+    In-page Interactive Challenge (Read vs. Listen)
     <section id="interactive-challenge" class="section-featured">
         <div class="container">
             <div class="challenge-header">
@@ -927,22 +931,6 @@
             }
         }
 
-        .audio-player-example {
-            margin-top: 10px;
-            padding: 15px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: flex;
-            justify-content: center;
-        }
-
-        .audio-player-example audio {
-            width: 100%;
-            max-width: 400px;
-            height: 40px;
-            outline: none;
-        }
-
         @media (max-width: 768px) {
             .emotion-emoji-btn {
                 font-size: 2em;
@@ -960,10 +948,6 @@
 
             .game-embed {
                 padding: 1.5rem;
-            }
-
-            .audio-player-example audio {
-                max-width: 100%;
             }
         }
     </style>
@@ -1390,7 +1374,7 @@
                             <strong>Sample ID:</strong> <code>SAMPLE_7c8b53fb</code>
                         </div>
                         <div class="example-field">
-                            <strong>Transcription:</strong> <em>"It's elevn o'clock."</em>
+                            <strong>Transcription:</strong> <em>"Kids are talking by the door."</em>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Read the transcription and classify the emotion. Based on the
@@ -1500,14 +1484,7 @@
                             <strong>Sample ID:</strong> <code>SAMPLE_7c8b53fb</code>
                         </div>
                         <div class="example-field">
-                            <strong>Audio:</strong> <code>CREMAD_train_0333</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source src="/users/PAS2062/delijingyic/project/LISTEN-website/1011_IEO_ANG_HI.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
+                            <strong>Audio:</strong> <code>RAVDESS_train_0333</code>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
@@ -1540,14 +1517,6 @@
                         </div>
                         <div class="example-field">
                             <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05M_script01_1b_F030</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source
-                                        src="/users/PAS2062/delijingyic/project/LISTEN-website/Ses01F_impro05_F021.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
@@ -1580,13 +1549,6 @@
                         </div>
                         <div class="example-field">
                             <strong>Audio:</strong> <code>MUStARD_PRO_1_7575_u_3B</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source src="/users/PAS2062/delijingyic/project/LISTEN-website/1_7575_u.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Listen to the audio and classify the emotion. What emotion is
@@ -1619,17 +1581,10 @@
                             <strong>Sample ID:</strong> <code>SAMPLE_7c8b53fb</code>
                         </div>
                         <div class="example-field">
-                            <strong>Audio:</strong> <code>CREMAD_train_0333</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source src="/users/PAS2062/delijingyic/project/LISTEN-website/1011_IEO_ANG_HI.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
+                            <strong>Audio:</strong> <code>RAVDESS_train_0333</code>
                         </div>
                         <div class="example-field">
-                            <strong>Transcription:</strong> <em>"It's elevn o'clock."</em>
+                            <strong>Transcription:</strong> <em>"Kids are talking by the door."</em>
                         </div>
                         <div class="example-field">
                             <strong>Prompt:</strong> Listen to the audio and read the transcription, then classify the
@@ -1662,14 +1617,6 @@
                         </div>
                         <div class="example-field">
                             <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05M_script01_1b_F030</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source
-                                        src="/users/PAS2062/delijingyic/project/LISTEN-website/Ses01F_impro05_F021.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
                         </div>
                         <div class="example-field">
                             <strong>Transcription:</strong> <em>"You are cruising for a bruising. You are in so much
@@ -1706,13 +1653,6 @@
                         </div>
                         <div class="example-field">
                             <strong>Audio:</strong> <code>MUStARD_PRO_1_7575_u_3B</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source src="/users/PAS2062/delijingyic/project/LISTEN-website/1_7575_u.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
                         </div>
                         <div class="example-field">
                             <strong>Transcription:</strong> <em>"You're right, the party's fantastic. Please, tell me
@@ -1751,15 +1691,7 @@
                             <strong>Sample ID:</strong> <code>SAMPLE_54df39ff</code>
                         </div>
                         <div class="example-field">
-                            <strong>Audio:</strong> <code>IEMOCAP_Ses01F_script01_3_F012</code>
-                            <div class="audio-player-example">
-                                <audio controls>
-                                    <source
-                                        src="/users/PAS2062/delijingyic/project/LISTEN-website/Ses01F_script01_3_F012.wav"
-                                        type="audio/wav">
-                                    Your browser does not support the audio element.
-                                </audio>
-                            </div>
+                            <strong>Audio:</strong> <code>IEMOCAP_Session5_Ses05F_impro03_F006</code>
                         </div>
                         <div class="example-field">
                             <strong>Content:</strong> <em>Nonverbal laughter</em>
@@ -1774,10 +1706,10 @@
                         </div>
                         <div class="example-results">
                             <div class="result-item">
-                                <strong>Ground Truth:</strong> <span class="badge-happiness">happiness</span>
+                                <strong>Ground Truth:</strong> <span class="badge-excitement">sadness</span>
                             </div>
                             <div class="result-item">
-                                <strong>Model Prediction:</strong> <span class="badge-incorrect">B (happiness) ✓</span>
+                                <strong>Model Prediction:</strong> <span class="badge-incorrect">D (sadness) ✓</span>
                             </div>
                         </div>
                         <div class="example-note">
