@@ -61,7 +61,7 @@
                     critical acoustic cues—especially when words and tone conflict.
                 </p>
                 <div class="hero-buttons">
-                    <a href="https://arxiv.org/abs/2510.10444" class="btn btn-primary" target="_blank">
+                    <a href="https://aclanthology.org/2026.eacl-long.274/" class="btn btn-primary" target="_blank">
                         <i class="fas fa-file-alt"></i> Read Paper
                     </a>
                     <a href="https://github.com/DeliJingyiC/LISTEN" class="btn btn-primary" target="_blank">
@@ -637,10 +637,8 @@
                     <label>Filter by Metric:</label>
                     <select id="metricFilter">
                         <option value="accuracy">Accuracy</option>
-                        <option value="weighted_accuracy">Weighted Accuracy</option>
                         <option value="uar">UAR</option>
                         <option value="macro_f1">Macro F1</option>
-                        <option value="micro_f1">Micro F1</option>
                     </select>
                 </div>
                 <div class="search-group">
@@ -680,10 +678,18 @@
                 <ul>
                     <li><strong>Overall Average</strong>: Mean accuracy across all audio and text+audio results from the
                         four experimental conditions (7 modalities total, excluding text-only)</li>
-                    <li><strong>Weighted Accuracy</strong>: Accuracy weighted by class distribution</li>
                     <li><strong>UAR</strong>: Unweighted Average Recall (mean of per-class recalls)</li>
                     <li><strong>Macro F1</strong>: Unweighted mean of per-class F1 scores</li>
-                    <li><strong>Micro F1</strong>: F1 score calculated globally across all classes</li>
+                    <li><strong>UAR / Macro F1 availability</strong>: reported only for models we re-ran with full
+                        per-class scoring; rows sourced from the original paper report accuracy only and show
+                        &ldquo;--&rdquo; under UAR/Macro F1. Neutral-Text (Text) accuracy uses the paper's
+                        neutral-override convention, for which per-class UAR/Macro F1 are not well defined and are
+                        omitted.</li>
+                    <li><strong>Prompt/pipeline note</strong>: newly added models (Gemini 3 Pro/Flash, Gemini 3.1
+                        Flash Lite, Qwen3.5-Omni-Flash/Plus) were scored with a corrected multiple-choice prompt and
+                        letter extractor that fix inconsistencies in the original benchmark harness. Cross-row
+                        differences on the 10-way Emotion-Mismatched (Exp 3) and Emotion-Matched (Exp 2) conditions
+                        therefore carry a small methodological component in addition to genuine model differences.</li>
                     <li><strong>Baseline Models</strong>: Uniform Guess and Majority Guess are not ranked with other
                         models</li>
                 </ul>
@@ -1184,15 +1190,27 @@
             <h2>Citation</h2>
             <p>If you use LISTEN in your research, please cite:</p>
             <div class="citation-box">
-                <pre><code>@misc{chen2025audiollmsreallylisten,
-                    title={Do Audio LLMs Really LISTEN, or Just Transcribe? Measuring Lexical vs. Acoustic Emotion Cues Reliance}, 
-                    author={Jingyi Chen and Zhimeng Guo and Jiyun Chun and Pichao Wang and Andrew Perrault and Micha Elsner},
-                    year={2025},
-                    eprint={2510.10444},
-                    archivePrefix={arXiv},
-                    primaryClass={cs.CL},
-                    url={https://arxiv.org/abs/2510.10444}, 
-              }</code></pre>
+                <pre><code>@inproceedings{chen-etal-2026-audio,
+    title = "Do Audio {LLM}s Really {LISTEN}, or Just Transcribe? Measuring Lexical vs. Acoustic Emotion Cues Reliance",
+    author = "Chen, Jingyi  and
+      Guo, Zhimeng  and
+      Chun, Jiyun  and
+      Wang, Pichao  and
+      Perrault, Andrew  and
+      Elsner, Micha",
+    editor = "Demberg, Vera  and
+      Inui, Kentaro  and
+      Marquez, Llu{\'i}s",
+    booktitle = "Proceedings of the 19th Conference of the {E}uropean Chapter of the {A}ssociation for {C}omputational {L}inguistics (Volume 1: Long Papers)",
+    month = mar,
+    year = "2026",
+    address = "Rabat, Morocco",
+    publisher = "Association for Computational Linguistics",
+    url = "https://aclanthology.org/2026.eacl-long.274/",
+    doi = "10.18653/v1/2026.eacl-long.274",
+    pages = "5848--5877",
+    ISBN = "979-8-89176-380-7"
+}</code></pre>
                 <button class="copy-btn" onclick="copyBibtex()">
                     <i class="fas fa-copy"></i> Copy
                 </button>
@@ -1202,9 +1220,9 @@
 
     <footer>
         <div class="container">
-            <p>&copy; 2025 LISTEN Benchmark. All rights reserved.</p>
+            <p>&copy; 2026 LISTEN Benchmark. All rights reserved.</p>
             <p>
-                <a href="https://arxiv.org/abs/2510.10444" target="_blank">
+                <a href="https://aclanthology.org/2026.eacl-long.274/" target="_blank">
                     <i class="fas fa-file-alt"></i> Paper
                 </a>
                 <a href="https://github.com/DeliJingyiC/LISTEN" target="_blank">
